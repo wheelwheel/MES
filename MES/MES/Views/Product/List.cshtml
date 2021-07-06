@@ -1,0 +1,97 @@
+﻿@model MES.Models.re_completeViewModel
+
+@{
+    ViewBag.Title = "產品";
+}
+
+
+<div class="row justify-content-center m-3">
+    <div class="col-md-12">
+        <div class="container-fluid">
+            <div class="h2 mt-2">
+                <span class="text-primary">產品列表</span>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped custom-table display " id="myDataTable">
+                    <thead>
+                        <tr scope="col">
+                            <th >
+                                回報單編號
+                            </th>
+                            <th >
+                                訂單編號
+                            </th>
+                            @*<th >
+                                產品編號
+                            </th>*@
+                            <th >
+                                產品名稱
+                            </th>
+                            @*<th >
+                                製程編號
+                            </th>*@
+                            <th >
+                                製程名稱
+                            </th>
+                            <th >
+                                機台名稱
+                            </th>
+                            <th >
+                                操作員編號
+                            </th>
+                            <th >
+                                開始時間
+                            </th>
+                            <th >
+                                結束時間
+                            </th>
+                            <th >
+                                數量
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var Popup, dataTable;
+    $(document).ready(function () {
+         dataTable = $('#myDataTable').DataTable({
+                "ajax": {
+                    "url": '@Url.Action("GetDataList" , "Product" )',
+                    "type": "get",
+                    "datatype": "json"
+                },
+                "language": {
+                    url: "@Url.Content("~\\Content\\lang\\Chinese-traditional.json")"
+                },
+                "order": [[ 0, "asc" ]],
+                "columns": [
+
+                    { "data": "re_complete_no", "width": "40px" },
+                    { "data": "order_no", "width": "40px" },
+/*                    { "data": "product_no", "width": "50px" },*/
+                    { "data": "product_name", "width": "50px" },
+/*                    { "data": "proc_no", "width": "50px" },*/
+                    { "data": "proc_name", "width": "50px" },
+
+                    { "data": "mach_name", "width": "50px" },
+                    { "data": "user_no", "width": "70px" },
+                    {
+                        "data": "start_time", "width": "60px",
+                        "render": function (data) { return moment(data).format("YYYY/MM/DD"); }
+                    },
+                    {
+                        "data": "end_time", "width": "60px",
+                        "render": function (data) { return moment(data).format("YYYY/MM/DD"); }
+                    },
+                    { "data": "qty", "width": "20px" }
+             ],
+
+         });
+    });
+</script>

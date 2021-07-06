@@ -1,0 +1,37 @@
+﻿
+<li class="nav-item dropdown m-2">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">生產</span> <span class="caret"></span></a>
+
+    <ul class="dropdown-menu m-2">
+        <li class="dropdown-item">@Html.ActionLink("訂單維護", "List", "Order", new { page = 1 }, new { @class = "fa fa-wrench" })</li>
+        <li class="dropdown-item">@Html.ActionLink("製令維護", "List", "WorkOrder", new { page = 1 }, new { @class = "fa fa-wrench" })</li>
+        <li class="dropdown-item">@Html.ActionLink("流程維護", "List", "Route", new { page = 1 }, new { @class = "fa fa-wrench" })</li>
+        <li class="dropdown-item">@Html.ActionLink("工單維護", "List", "Re_Complete", new { page = 1 }, new { @class = "fa fa-wrench" })</li>
+        <li class="dropdown-item">@Html.ActionLink("製程維護", "List", "Process", new { page = 1 }, new { @class = "fa fa-wrench" })</li>
+    </ul>
+</li>
+<li class="nav-item dropdown m-2">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">物料</span> <span class="caret"></span></a>
+
+    <ul class="dropdown-menu m-2">
+        <li class="dropdown-item">@Html.ActionLink("物料查詢", "EnTraceCode", "Material", null, new { @class = "fa fa-search" })</li>
+        <li class="dropdown-item">@Html.ActionLink("物料列表", "List", "Material", null, new { @class = "fa fa-list-alt" })</li>
+        <li class="dropdown-item">@Html.ActionLink("新增資料", "Create", "Material", null, new { @class = "fa fa-plus" })</li>
+    </ul>
+</li>
+<li class="nav-item dropdown m-2">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">機台</span> <span class="caret"></span></a>
+
+    <ul class="dropdown-menu">
+        <li class="dropdown-item">@Html.ActionLink("機台列表", "List", "Machine", null, new { @class = "fa fa-list-alt" })</li>
+    </ul>
+</li>
+<li class="nav-item dropdown m-2">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">產品</span> <span class="caret"></span></a>
+
+    <ul class="dropdown-menu">
+        <li class="dropdown-item">@Html.ActionLink("產品查詢", "EnTraceCode", "Product", null, new { @class = "fa fa-search" })</li>
+        <li class="dropdown-item">@Html.ActionLink("產品列表", "List", "Product", null, new { @class = "fa fa-list-alt" })</li>
+        
+    </ul>
+</li>

@@ -1,0 +1,181 @@
+﻿@model MES.Models.DateSearchViewModel
+
+@{
+    ViewBag.Title = "機台資訊";
+}
+
+<link href="~/css/chart_search/main.css" rel="stylesheet" media="all">
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/datepicker.js")"></script>
+}
+
+<h2 class="text-center mt-2">  @ViewBag.MachineName 機台資訊</h2>
+@*<h2 class="text-center m-1">  @ViewBag.Date</h2>*@
+
+
+@using (Html.BeginForm("Search", "Chart"))
+{
+    <div class=" form-group row justify-content-center mt-4">
+        <div class="col-md-12 col-lg-3 input-group input--medium ">
+            <label class="label mb-0 mr-2 align-self-center">選擇時間:</label>
+            @Html.EditorFor(model => model.search_date, new { htmlAttributes = new { @class = "form-control datepicker input--style-1 pl-3" } })
+        </div>
+        <div class="col-md-12 col-lg-2 col-xl-1 mt-auto mb-auto pt-2">
+            <input type="submit" value="選擇" class="btn-submit" />
+        </div>
+    </div>
+}
+
+
+
+
+
+<div class="row" style="display:flex;flex-wrap: wrap;">
+    <div class="col-md-12 col-lg-9">
+        <canvas id="myChart" width="300" height="500"></canvas>
+    </div>
+    <div class=" col-md-12 col-lg-3">
+        <canvas id="myChart2" width="200" height="500"></canvas>
+    </div>
+</div>
+
+
+
+
+<div class="row justify-content-center" >
+    @Html.ActionLink("返回機台列表", "List", "Machine", null, new { @class = "btn-submit col-md-4 col-lg-2 mt-5 mb-3 d-flex justify-content-center",
+    style = "text-decoration:none;color:black;"})
+</div>
+
+<script>
+
+    var jsLabelList =@Html.Raw(ViewBag.LabelList);
+    var jsDataList =@Html.Raw(ViewBag.DataList);
+
+    var jsLabelList2=@Html.Raw(ViewBag.LabelList2);
+    var jsDataList2 =@Html.Raw(ViewBag.DataList2);
+    var jsDataList3 =@Html.Raw(ViewBag.DataList3);
+    var jsDataList4=@Html.Raw(ViewBag.DataList4);
+
+    var ctx = document.getElementById('myChart');
+    ctx.style.backgroundColor = 'rgba(255,255,255,0.9)';
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: jsLabelList,
+            datasets: [
+                {
+                    label: '機台數據',
+                    type: 'line',
+                    yAxisID: 'A',
+                    data: jsDataList,
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    borderWidth: 1,
+                    lineTension: 0
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                //text: '機台資訊'
+            },
+            legend: {
+                position: 'top',
+            },
+            stacked: false,
+            scales: {
+                yAxes: [{
+                    id: 'A',
+                    type: 'linear',
+                    position: 'left',
+                    ticks: {
+                        precision:100,
+                        max: 1200,
+                        min: 0,
+                        //beginAtZero: true,
+                        autoSkip: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+
+
+    var ctx2 = document.getElementById('myChart2');
+    ctx2.style.backgroundColor = 'rgba(255,255,255,0.9)';
+
+    var myChart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: jsLabelList2,
+            datasets: [
+                {
+                    yAxisID: 'A',
+                    label: '良率(%)',
+                    data: jsDataList2,
+                    fill: true,
+                    borderColor: 'rgba(54, 162, 235)',
+                    backgroundColor: 'rgba(32,246,51,0.2)',
+                    stack: 'Stack 0',
+                },
+                {
+                    yAxisID: 'B',
+                    label: '維修(個)',
+                    data: jsDataList3,
+                    fill: true,
+                    borderColor: 'rgba(245,245,245)',
+                    backgroundColor: 'rgba(251,248, 75, 0.5)',
+                    stack: 'Stack 1',
+                },
+                {
+                    yAxisID: 'B',
+                    label: '失敗(個)',
+                    data: jsDataList4,
+                    fill: true,
+                    borderColor: 'rgba(241,54,54)',
+                    backgroundColor: 'rgba(244,95,81,0.5)',
+                    stack: 'Stack 1',
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+            },
+            legend: {
+                position: 'top',
+            },
+            stacked: false,
+            scales: {
+                yAxes: [{
+                    id: 'A',
+                    position: 'left',
+                    ticks: {
+                        precision: 1,
+                        max: 100,
+                        min: 90
+                    }
+                }, {
+                    id: 'B',
+                    position: 'right',
+                        ticks: {
+                            precision: 2,
+                        max: 20,
+                        min: 0
+                        },
+                        gridLines: {
+                            drawOnChartArea: false
+                        }
+                }]
+            }
+        }
+    });
+</script>

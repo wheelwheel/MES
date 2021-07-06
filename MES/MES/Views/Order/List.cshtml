@@ -1,0 +1,136 @@
+﻿@model MES.Models.OrderViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "訂單";
+}
+
+
+@section styles {
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+}
+<div class="container mt-3">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-5 col-md-6 col-sm-10 col-xs-12">
+            <div class="panel panel-group border border-secondary">
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading  bg-info">
+                        <h4>訂單資料維護</h4>
+                    </div>
+                    <div class="panel panel-body">
+                        @foreach (var item in Model.ordersList)
+                        {
+                            <div class="bg-secondary pt-1">
+                                @Html.PagedListPager((IPagedList)Model.ordersList, x => Url.Action("MasterPage", new { page = x }))
+                            </div>
+                            <div>
+                                @Html.ActionLink("新增", "CreateMaster", "Order", null, new { @class = "btn btn-success m-1" })
+                                @Html.ActionLink("修改", "EditMaster", "Order", new { id = item.rowid }, new { @class = "btn btn-primary m-1" })
+                                @Html.ActionLink("刪除", "DeleteMaster", "Order", new { id = item.rowid }, new { @class = "btn btn-danger m-1", onclick = "return confirm('是否確定要刪除?');" })
+                            </div>
+                            <table class="table row ml-2">
+                                <tr >
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.ordersList.First().order_no):
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.order_no)
+                                    </td>
+                                </tr>
+                                <tr >
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.ordersList.First().client_no):
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.client_no)
+                                    </td>
+                                </tr>
+                                <tr >
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.ordersList.First().order_date):
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.order_date)
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-group border border-secondary">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <!--<td class="">-->
+                                @*@Html.ActionLink("新增", "CreateDetail", "Order", null, new { @class = "btn btn-success" })*@
+                                <!--</td>-->
+                                <td class="">
+
+                                    @Html.DisplayNameFor(m => m.order_detailsList.First().product_no)
+
+                                </td>
+                                <td class="">
+
+                                    @Html.DisplayNameFor(m => m.order_detailsList.First().workoder_no)
+
+                                </td>
+
+                                <td></td>
+                            </tr>
+
+                            @foreach (var item in Model.order_detailsList)
+                            {
+                                <tr>
+                                    <!--<td class="">-->
+                                    @*@Html.ActionLink("修改", "EditDetail", "Order", new { id = item.rowid }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("刪除", "DeleteDetail", "Order", new { id = item.rowid }, new { @class = "btn btn-danger", onclick = "return confirm('是否確定要刪除?');" })*@
+                                    <!--</td>-->
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.product_no)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.workoder_no)
+                                    </td>
+
+
+                                    <td>
+                                        @Html.ActionLink("修改", "EditDetail", "Order", new { id = item.rowid }, new { @class = "btn btn-primary" })
+
+                                        @Html.ActionLink("刪除", "DeleteDetail", "Order", new { id = item.rowid }, new { @class = "btn btn-danger", onclick = "return confirm('是否確定要刪除?');" })
+
+                                    </td>
+
+                                </tr>
+                                <tr >
+                                    <td class=" " style="border-bottom :none">
+
+                                        @Html.DisplayNameFor(m => m.order_detailsList.First().remark)
+
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.remark)
+
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            }
+                        <tr>
+                            <td class="">
+                                @Html.ActionLink("新增", "CreateDetail", "Order", null, new { @class = "btn btn-success" })
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </table>
+                        <div class="bg-secondary pt-1">
+                            @Html.PagedListPager((IPagedList)Model.order_detailsList, x => Url.Action("DetailPage", new { page = x }))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

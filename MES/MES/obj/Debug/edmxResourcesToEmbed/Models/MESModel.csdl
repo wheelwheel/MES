@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MESEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="machine" EntityType="MESModel.machine" />
+    <EntitySet Name="material" EntityType="MESModel.material" />
+    <EntitySet Name="order" EntityType="MESModel.order" />
+    <EntitySet Name="order_detail" EntityType="MESModel.order_detail" />
+    <EntitySet Name="process" EntityType="MESModel.process" />
+    <EntitySet Name="product" EntityType="MESModel.product" />
+    <EntitySet Name="re_complete" EntityType="MESModel.re_complete" />
+    <EntitySet Name="sysdiagrams" EntityType="MESModel.sysdiagrams" />
+    <EntitySet Name="users" EntityType="MESModel.users" />
+    <EntitySet Name="workorder" EntityType="MESModel.workorder" />
+    <EntitySet Name="workorder_detail" EntityType="MESModel.workorder_detail" />
+    <EntitySet Name="route" EntityType="MESModel.route" />
+    <EntitySet Name="route_detail" EntityType="MESModel.route_detail" />
+    <EntitySet Name="re_complete_detail" EntityType="MESModel.re_complete_detail" />
+  </EntityContainer>
+  <EntityType Name="machine">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="m_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="material">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="m_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="factory_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shape_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shape_length" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="shape_diameter" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="length" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="client_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="order_date" Type="DateTime" Precision="0" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="order_detail">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="product_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="workoder_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="process">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="proc_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="proc_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Diameter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Diameter_Tolerance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Straightness" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="re_complete">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="re_complete_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="re_complete_date" Type="DateTime" Precision="0" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="m_account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="role_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pass_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="birthday" Type="DateTime" Precision="0" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="workorder">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="workorder_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="workorder_date" Type="DateTime" Precision="0" />
+    <Property Name="oder_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="product_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="route_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="workorder_detail">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="workorder_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sort_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="process_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="machine_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="in_qty" Type="Int32" Nullable="false" />
+    <Property Name="bad_qty" Type="Int32" Nullable="false" />
+    <Property Name="adj_qty" Type="Int32" Nullable="false" />
+    <Property Name="out_qty" Type="Int32" Nullable="false" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="route">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="r_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="r_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="route_detail">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="r_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sort_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="proc_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="min_value" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="max_value" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="re_complete_detail">
+    <Key>
+      <PropertyRef Name="rowid" />
+    </Key>
+    <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="re_complete_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="proc_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mach_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="value1" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="value2" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="value3" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="user_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="start_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

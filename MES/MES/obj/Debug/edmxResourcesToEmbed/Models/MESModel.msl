@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MESModelStoreContainer" CdmEntityContainer="MESEntities">
+    <EntitySetMapping Name="machine">
+      <EntityTypeMapping TypeName="MESModel.machine">
+        <MappingFragment StoreEntitySet="machine">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="m_Name" ColumnName="m_Name" />
+          <ScalarProperty Name="m_No" ColumnName="m_No" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="material">
+      <EntityTypeMapping TypeName="MESModel.material">
+        <MappingFragment StoreEntitySet="material">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="length" ColumnName="length" />
+          <ScalarProperty Name="shape_diameter" ColumnName="shape_diameter" />
+          <ScalarProperty Name="shape_length" ColumnName="shape_length" />
+          <ScalarProperty Name="shape_no" ColumnName="shape_no" />
+          <ScalarProperty Name="factory_no" ColumnName="factory_no" />
+          <ScalarProperty Name="m_Name" ColumnName="m_Name" />
+          <ScalarProperty Name="m_No" ColumnName="m_No" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order">
+      <EntityTypeMapping TypeName="MESModel.order">
+        <MappingFragment StoreEntitySet="order">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="client_no" ColumnName="client_no" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_detail">
+      <EntityTypeMapping TypeName="MESModel.order_detail">
+        <MappingFragment StoreEntitySet="order_detail">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="workoder_no" ColumnName="workoder_no" />
+          <ScalarProperty Name="product_no" ColumnName="product_no" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="process">
+      <EntityTypeMapping TypeName="MESModel.process">
+        <MappingFragment StoreEntitySet="process">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="proc_name" ColumnName="proc_name" />
+          <ScalarProperty Name="proc_no" ColumnName="proc_no" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product">
+      <EntityTypeMapping TypeName="MESModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="Straightness" ColumnName="Straightness" />
+          <ScalarProperty Name="Diameter_Tolerance" ColumnName="Diameter_Tolerance" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Diameter" ColumnName="Diameter" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_no" ColumnName="product_no" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="re_complete">
+      <EntityTypeMapping TypeName="MESModel.re_complete">
+        <MappingFragment StoreEntitySet="re_complete">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="re_complete_date" ColumnName="re_complete_date" />
+          <ScalarProperty Name="re_complete_no" ColumnName="re_complete_no" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MESModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="MESModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="email_user" ColumnName="email_user" />
+          <ScalarProperty Name="pass_user" ColumnName="pass_user" />
+          <ScalarProperty Name="role_no" ColumnName="role_no" />
+          <ScalarProperty Name="m_name" ColumnName="m_name" />
+          <ScalarProperty Name="m_account" ColumnName="m_account" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="workorder">
+      <EntityTypeMapping TypeName="MESModel.workorder">
+        <MappingFragment StoreEntitySet="workorder">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="route_no" ColumnName="route_no" />
+          <ScalarProperty Name="product_no" ColumnName="product_no" />
+          <ScalarProperty Name="oder_no" ColumnName="oder_no" />
+          <ScalarProperty Name="workorder_date" ColumnName="workorder_date" />
+          <ScalarProperty Name="workorder_no" ColumnName="workorder_no" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="workorder_detail">
+      <EntityTypeMapping TypeName="MESModel.workorder_detail">
+        <MappingFragment StoreEntitySet="workorder_detail">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="out_qty" ColumnName="out_qty" />
+          <ScalarProperty Name="adj_qty" ColumnName="adj_qty" />
+          <ScalarProperty Name="bad_qty" ColumnName="bad_qty" />
+          <ScalarProperty Name="in_qty" ColumnName="in_qty" />
+          <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+          <ScalarProperty Name="process_no" ColumnName="process_no" />
+          <ScalarProperty Name="sort_no" ColumnName="sort_no" />
+          <ScalarProperty Name="workorder_no" ColumnName="workorder_no" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="route">
+      <EntityTypeMapping TypeName="MESModel.route">
+        <MappingFragment StoreEntitySet="route">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="r_name" ColumnName="r_name" />
+          <ScalarProperty Name="r_no" ColumnName="r_no" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="route_detail">
+      <EntityTypeMapping TypeName="MESModel.route_detail">
+        <MappingFragment StoreEntitySet="route_detail">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="max_value" ColumnName="max_value" />
+          <ScalarProperty Name="min_value" ColumnName="min_value" />
+          <ScalarProperty Name="proc_no" ColumnName="proc_no" />
+          <ScalarProperty Name="sort_no" ColumnName="sort_no" />
+          <ScalarProperty Name="r_no" ColumnName="r_no" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="re_complete_detail">
+      <EntityTypeMapping TypeName="MESModel.re_complete_detail">
+        <MappingFragment StoreEntitySet="re_complete_detail">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="end_time" ColumnName="end_time" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="user_no" ColumnName="user_no" />
+          <ScalarProperty Name="value3" ColumnName="value3" />
+          <ScalarProperty Name="value2" ColumnName="value2" />
+          <ScalarProperty Name="value1" ColumnName="value1" />
+          <ScalarProperty Name="mach_no" ColumnName="mach_no" />
+          <ScalarProperty Name="proc_no" ColumnName="proc_no" />
+          <ScalarProperty Name="re_complete_no" ColumnName="re_complete_no" />
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

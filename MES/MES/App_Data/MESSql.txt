@@ -1,0 +1,740 @@
+USE [MES]
+GO
+/****** Object:  Table [dbo].[machine]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[machine](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[m_No] [nvarchar](50) NULL,
+	[m_Name] [nvarchar](50) NULL,
+	[status] [nvarchar](50) NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_machine] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[material]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[material](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[m_No] [nvarchar](50) NULL,
+	[m_Name] [nvarchar](50) NULL,
+	[factory_no] [nvarchar](50) NULL,
+	[shape_no] [nvarchar](50) NULL,
+	[shape_length] [decimal](18, 4) NULL,
+	[shape_diameter] [decimal](18, 4) NULL,
+	[length] [decimal](18, 4) NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_materials] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[order]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[order](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[order_no] [nvarchar](50) NULL,
+	[client_no] [nvarchar](50) NULL,
+	[order_date] [date] NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_order] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[order_detail]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[order_detail](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[order_no] [nvarchar](50) NULL,
+	[product_no] [nvarchar](50) NULL,
+	[workoder_no] [nvarchar](50) NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_order_detail] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[process]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[process](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[proc_no] [nvarchar](50) NULL,
+	[proc_name] [nvarchar](50) NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_process] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[product]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[product](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[product_no] [nvarchar](50) NULL,
+	[product_name] [nvarchar](50) NULL,
+	[role] [nvarchar](50) NULL,
+	[Diameter] [nvarchar](50) NULL,
+	[Length] [nvarchar](50) NULL,
+	[Diameter_Tolerance] [nvarchar](50) NULL,
+	[Straightness] [nvarchar](50) NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_porduct] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[re_complete]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[re_complete](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[order_no] [nvarchar](50) NULL,
+	[re_complete_no] [nvarchar](50) NULL,
+	[re_complete_date] [date] NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_Re_complete] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[re_complete_detail]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[re_complete_detail](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[re_complete_no] [nvarchar](50) NULL,
+	[proc_no] [nvarchar](50) NULL,
+	[mach_no] [nvarchar](50) NULL,
+	[value1] [decimal](18, 4) NULL,
+	[value2] [decimal](18, 4) NULL,
+	[value3] [decimal](18, 4) NULL,
+	[user_no] [nvarchar](50) NULL,
+	[start_time] [datetime] NOT NULL,
+	[end_time] [datetime] NOT NULL,
+	[qty] [int] NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_re_complete_detail] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[route]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[route](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[r_no] [nvarchar](50) NULL,
+	[r_name] [nvarchar](50) NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_route] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[route_detail]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[route_detail](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[r_no] [nvarchar](50) NULL,
+	[sort_no] [nvarchar](50) NULL,
+	[proc_no] [nvarchar](50) NULL,
+	[min_value] [decimal](18, 4) NULL,
+	[max_value] [decimal](18, 4) NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_process_detail] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[users]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[users](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[m_account] [nvarchar](50) NULL,
+	[m_name] [nvarchar](50) NULL,
+	[role_no] [nvarchar](50) NULL,
+	[pass_user] [nvarchar](50) NULL,
+	[email_user] [nvarchar](50) NULL,
+	[birthday] [date] NULL,
+	[address] [nvarchar](50) NULL,
+	[id] [nvarchar](50) NULL,
+	[phone] [nvarchar](50) NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[workorder]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[workorder](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[workorder_no] [nvarchar](50) NULL,
+	[workorder_date] [date] NULL,
+	[oder_no] [nvarchar](50) NULL,
+	[product_no] [nvarchar](50) NULL,
+	[route_no] [nvarchar](50) NULL,
+	[qty] [int] NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_workorder] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[workorder_detail]    Script Date: 2021/6/27 下午 01:52:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[workorder_detail](
+	[rowid] [int] IDENTITY(1,1) NOT NULL,
+	[workorder_no] [nvarchar](50) NULL,
+	[sort_no] [nvarchar](50) NULL,
+	[process_no] [nvarchar](50) NULL,
+	[machine_no] [nvarchar](50) NULL,
+	[in_qty] [int] NOT NULL,
+	[bad_qty] [int] NOT NULL,
+	[adj_qty] [int] NOT NULL,
+	[out_qty] [int] NOT NULL,
+	[remark] [nvarchar](250) NULL,
+ CONSTRAINT [PK_workorder_detail] PRIMARY KEY CLUSTERED 
+(
+	[rowid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[machine] ON 
+GO
+INSERT [dbo].[machine] ([rowid], [m_No], [m_Name], [status], [remark]) VALUES (1, N'A01', N'加熱爐1號', N'G', NULL)
+GO
+INSERT [dbo].[machine] ([rowid], [m_No], [m_Name], [status], [remark]) VALUES (2, N'A02', N'加熱爐2號', N'G', NULL)
+GO
+INSERT [dbo].[machine] ([rowid], [m_No], [m_Name], [status], [remark]) VALUES (3, N'B01', N'熱軋機1號', N'G', NULL)
+GO
+INSERT [dbo].[machine] ([rowid], [m_No], [m_Name], [status], [remark]) VALUES (4, N'B02', N'熱軋機2號', N'G', NULL)
+GO
+INSERT [dbo].[machine] ([rowid], [m_No], [m_Name], [status], [remark]) VALUES (5, N'C01', N'矯直機1號', N'G', NULL)
+GO
+INSERT [dbo].[machine] ([rowid], [m_No], [m_Name], [status], [remark]) VALUES (6, N'C02', N'矯直機2號', N'R', NULL)
+GO
+INSERT [dbo].[machine] ([rowid], [m_No], [m_Name], [status], [remark]) VALUES (7, N'D01', N'噴砂機1號', N'Y', NULL)
+GO
+INSERT [dbo].[machine] ([rowid], [m_No], [m_Name], [status], [remark]) VALUES (8, N'D02', N'噴砂機2號', N'G', NULL)
+GO
+INSERT [dbo].[machine] ([rowid], [m_No], [m_Name], [status], [remark]) VALUES (9, N'E01', N'冷抽機1號', N'R', NULL)
+GO
+INSERT [dbo].[machine] ([rowid], [m_No], [m_Name], [status], [remark]) VALUES (10, N'E02', N'冷抽機2號', N'G', NULL)
+GO
+SET IDENTITY_INSERT [dbo].[machine] OFF
+GO
+SET IDENTITY_INSERT [dbo].[material] ON 
+GO
+INSERT [dbo].[material] ([rowid], [m_No], [m_Name], [factory_no], [shape_no], [shape_length], [shape_diameter], [length], [remark]) VALUES (1, N'0001', N'小鋼胚', N'鹽水廠', N'圓坯', CAST(0.0000 AS Decimal(18, 4)), CAST(160.0000 AS Decimal(18, 4)), CAST(4000.0000 AS Decimal(18, 4)), NULL)
+GO
+INSERT [dbo].[material] ([rowid], [m_No], [m_Name], [factory_no], [shape_no], [shape_length], [shape_diameter], [length], [remark]) VALUES (2, N'0002', N'小鋼胚', N'鹽水廠', N'方坯', CAST(130.0000 AS Decimal(18, 4)), CAST(0.0000 AS Decimal(18, 4)), CAST(4500.0000 AS Decimal(18, 4)), NULL)
+GO
+INSERT [dbo].[material] ([rowid], [m_No], [m_Name], [factory_no], [shape_no], [shape_length], [shape_diameter], [length], [remark]) VALUES (3, N'0003', N'小鋼胚', N'鹽水廠', N'方坯', CAST(140.0000 AS Decimal(18, 4)), CAST(0.0000 AS Decimal(18, 4)), CAST(5000.0000 AS Decimal(18, 4)), NULL)
+GO
+INSERT [dbo].[material] ([rowid], [m_No], [m_Name], [factory_no], [shape_no], [shape_length], [shape_diameter], [length], [remark]) VALUES (4, N'0004', N'小鋼胚', N'鹽水廠', N'圓坯', CAST(0.0000 AS Decimal(18, 4)), CAST(180.0000 AS Decimal(18, 4)), CAST(6000.0000 AS Decimal(18, 4)), NULL)
+GO
+INSERT [dbo].[material] ([rowid], [m_No], [m_Name], [factory_no], [shape_no], [shape_length], [shape_diameter], [length], [remark]) VALUES (1020, N'0008', N'小鋼胚', N'鹽水廠', N'圓胚', CAST(0.0000 AS Decimal(18, 4)), CAST(200.0000 AS Decimal(18, 4)), CAST(1500.0000 AS Decimal(18, 4)), NULL)
+GO
+SET IDENTITY_INSERT [dbo].[material] OFF
+GO
+SET IDENTITY_INSERT [dbo].[order] ON 
+GO
+INSERT [dbo].[order] ([rowid], [order_no], [client_no], [order_date], [remark]) VALUES (1, N'20201028001', N'0001', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[order] ([rowid], [order_no], [client_no], [order_date], [remark]) VALUES (2, N'20201028002', N'0002', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[order] ([rowid], [order_no], [client_no], [order_date], [remark]) VALUES (1002, N'20201028003', N'0003', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[order] ([rowid], [order_no], [client_no], [order_date], [remark]) VALUES (1003, N'20201028004', N'0003', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[order] ([rowid], [order_no], [client_no], [order_date], [remark]) VALUES (1004, N'20201028005', N'0004', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[order] ([rowid], [order_no], [client_no], [order_date], [remark]) VALUES (1005, N'20201028006', N'0005', CAST(N'2020-10-28' AS Date), NULL)
+GO
+SET IDENTITY_INSERT [dbo].[order] OFF
+GO
+SET IDENTITY_INSERT [dbo].[order_detail] ON 
+GO
+INSERT [dbo].[order_detail] ([rowid], [order_no], [product_no], [workoder_no], [remark]) VALUES (1, N'20201028001', N'P01', N'20201028001', NULL)
+GO
+INSERT [dbo].[order_detail] ([rowid], [order_no], [product_no], [workoder_no], [remark]) VALUES (2, N'20201028002', N'C01', N'20201028002', NULL)
+GO
+INSERT [dbo].[order_detail] ([rowid], [order_no], [product_no], [workoder_no], [remark]) VALUES (3, N'20201028003', N'P01', N'20201028003', NULL)
+GO
+INSERT [dbo].[order_detail] ([rowid], [order_no], [product_no], [workoder_no], [remark]) VALUES (4, N'20201028004', N'C01', N'20201028004', NULL)
+GO
+INSERT [dbo].[order_detail] ([rowid], [order_no], [product_no], [workoder_no], [remark]) VALUES (5, N'20201028005', N'P01', N'20201028005', NULL)
+GO
+INSERT [dbo].[order_detail] ([rowid], [order_no], [product_no], [workoder_no], [remark]) VALUES (6, N'20201028006', N'P01', N'20201028006', NULL)
+GO
+SET IDENTITY_INSERT [dbo].[order_detail] OFF
+GO
+SET IDENTITY_INSERT [dbo].[process] ON 
+GO
+INSERT [dbo].[process] ([rowid], [proc_no], [proc_name], [remark]) VALUES (1, N'P01', N'加熱', NULL)
+GO
+INSERT [dbo].[process] ([rowid], [proc_no], [proc_name], [remark]) VALUES (2, N'P02', N'熱軋', NULL)
+GO
+INSERT [dbo].[process] ([rowid], [proc_no], [proc_name], [remark]) VALUES (3, N'P03', N'矯直', NULL)
+GO
+INSERT [dbo].[process] ([rowid], [proc_no], [proc_name], [remark]) VALUES (4, N'P04', N'噴砂', NULL)
+GO
+INSERT [dbo].[process] ([rowid], [proc_no], [proc_name], [remark]) VALUES (5, N'P05', N'冷抽', NULL)
+GO
+SET IDENTITY_INSERT [dbo].[process] OFF
+GO
+SET IDENTITY_INSERT [dbo].[product] ON 
+GO
+INSERT [dbo].[product] ([rowid], [product_no], [product_name], [role], [Diameter], [Length], [Diameter_Tolerance], [Straightness], [remark]) VALUES (7, N'P01', N'削皮棒', N'P', N'16.00-65.00', N'3000-6500', N'h10', N'0.50', NULL)
+GO
+INSERT [dbo].[product] ([rowid], [product_no], [product_name], [role], [Diameter], [Length], [Diameter_Tolerance], [Straightness], [remark]) VALUES (8, N'C01', N'冷精異形棒(六角)', NULL, N'4.76-55.00', N'2500-6500', N'h12', N'1.00', NULL)
+GO
+INSERT [dbo].[product] ([rowid], [product_no], [product_name], [role], [Diameter], [Length], [Diameter_Tolerance], [Straightness], [remark]) VALUES (9, N'C02', N'冷精異形棒(六角)', NULL, N'4.76-40.00', N'2500-6500', N'h11', N'1.00', NULL)
+GO
+INSERT [dbo].[product] ([rowid], [product_no], [product_name], [role], [Diameter], [Length], [Diameter_Tolerance], [Straightness], [remark]) VALUES (10, N'C03', N'冷精異形棒(扁圓)', NULL, N'4.76-63.50', N'2500-6500', N'h8', N'0.30', NULL)
+GO
+SET IDENTITY_INSERT [dbo].[product] OFF
+GO
+SET IDENTITY_INSERT [dbo].[re_complete] ON 
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1, N'20201028001', N'20201028001', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (2, N'20201028001', N'20201028002', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1002, N'20201028001', N'20201028003', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1003, N'20201028002', N'20201028004', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1004, N'20201028002', N'20201028005', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1005, N'20201028002', N'20201028006', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1006, N'20201028003', N'20201028007', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1007, N'20201028003', N'20201028008', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1008, N'20201028003', N'20201028009', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1009, N'20201028004', N'20201028010', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1010, N'20201028004', N'20201028011', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1011, N'20201028004', N'20201028012', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1012, N'20201028005', N'20201028013', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1013, N'20201028005', N'20201028014', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1014, N'20201028005', N'20201028015', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1015, N'20201028006', N'20201028016', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1016, N'20201028006', N'20201028017', CAST(N'2020-10-28' AS Date), NULL)
+GO
+INSERT [dbo].[re_complete] ([rowid], [order_no], [re_complete_no], [re_complete_date], [remark]) VALUES (1017, N'20201028006', N'20201028018', CAST(N'2020-10-28' AS Date), NULL)
+GO
+SET IDENTITY_INSERT [dbo].[re_complete] OFF
+GO
+SET IDENTITY_INSERT [dbo].[re_complete_detail] ON 
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (1, N'20201028001', N'P01', N'A01', CAST(980.0000 AS Decimal(18, 4)), NULL, NULL, N'001', CAST(N'2021-10-28T10:05:00.000' AS DateTime), CAST(N'2021-10-28T12:10:20.000' AS DateTime), 990, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (2, N'20201028002', N'P02', N'B02', NULL, NULL, NULL, N'002', CAST(N'2021-10-28T12:43:20.000' AS DateTime), CAST(N'2021-10-28T14:03:20.000' AS DateTime), 985, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (3, N'20201028003', N'P03', N'C02', NULL, NULL, NULL, N'003', CAST(N'2021-10-28T15:05:30.000' AS DateTime), CAST(N'2021-10-28T17:15:20.000' AS DateTime), 980, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (4, N'20201028004', N'P04', N'D01', NULL, NULL, NULL, N'004', CAST(N'2021-10-28T08:25:30.000' AS DateTime), CAST(N'2021-10-28T09:35:40.000' AS DateTime), 1500, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (5, N'20201028005', N'P05', N'E01', NULL, NULL, NULL, N'005', CAST(N'2021-10-28T10:05:40.000' AS DateTime), CAST(N'2021-10-28T11:25:10.000' AS DateTime), 1493, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (6, N'20201028006', N'P03', N'C02', NULL, NULL, NULL, N'003', CAST(N'2021-10-28T12:15:20.000' AS DateTime), CAST(N'2021-10-28T13:10:50.000' AS DateTime), 1489, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (7, N'20201028007', N'P01', N'A02', CAST(1000.0000 AS Decimal(18, 4)), NULL, NULL, N'006', CAST(N'2021-10-28T12:00:00.000' AS DateTime), CAST(N'2021-10-28T14:00:00.000' AS DateTime), 1300, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (8, N'20201028008', N'P02', N'B01', NULL, NULL, NULL, N'007', CAST(N'2021-10-28T14:30:00.000' AS DateTime), CAST(N'2021-10-28T16:00:00.000' AS DateTime), 1296, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (9, N'20201028009', N'P03', N'C01', NULL, NULL, NULL, N'008', CAST(N'2021-10-28T17:00:00.000' AS DateTime), CAST(N'2021-10-28T19:00:00.000' AS DateTime), 1294, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (10, N'20201028010', N'P04', N'D02', NULL, NULL, NULL, N'009', CAST(N'2021-10-28T08:45:30.000' AS DateTime), CAST(N'2021-10-28T09:25:30.000' AS DateTime), 800, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (11, N'20201028011', N'P05', N'E02', NULL, NULL, NULL, N'010', CAST(N'2021-10-28T09:50:40.000' AS DateTime), CAST(N'2021-10-28T11:05:20.000' AS DateTime), 793, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (12, N'20201028012', N'P03', N'C01', NULL, NULL, NULL, N'008', CAST(N'2021-10-28T11:30:10.000' AS DateTime), CAST(N'2021-10-28T12:28:10.000' AS DateTime), 790, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (13, N'20201028013', N'P01', N'A01', CAST(994.0000 AS Decimal(18, 4)), NULL, NULL, N'001', CAST(N'2021-10-28T12:20:20.000' AS DateTime), CAST(N'2021-10-28T14:10:20.000' AS DateTime), 1000, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (14, N'20201028014', N'P02', N'B02', NULL, NULL, NULL, N'002', CAST(N'2021-10-28T14:23:20.000' AS DateTime), CAST(N'2021-10-28T16:53:20.000' AS DateTime), 996, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (15, N'20201028015', N'P03', N'C02', NULL, NULL, NULL, N'003', CAST(N'2021-10-28T17:35:20.000' AS DateTime), CAST(N'2021-10-28T19:15:20.000' AS DateTime), 993, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (16, N'20201028016', N'P01', N'A01', CAST(996.0000 AS Decimal(18, 4)), NULL, NULL, N'001', CAST(N'2021-10-28T14:25:20.000' AS DateTime), CAST(N'2021-10-28T16:35:20.000' AS DateTime), 800, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (17, N'20201028017', N'P02', N'B02', NULL, NULL, NULL, N'002', CAST(N'2021-10-28T17:09:20.000' AS DateTime), CAST(N'2021-10-28T19:03:20.000' AS DateTime), 798, NULL)
+GO
+INSERT [dbo].[re_complete_detail] ([rowid], [re_complete_no], [proc_no], [mach_no], [value1], [value2], [value3], [user_no], [start_time], [end_time], [qty], [remark]) VALUES (18, N'20201028018', N'P03', N'C02', NULL, NULL, NULL, N'003', CAST(N'2021-10-28T19:30:20.000' AS DateTime), CAST(N'2021-10-28T21:30:50.000' AS DateTime), 796, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[re_complete_detail] OFF
+GO
+SET IDENTITY_INSERT [dbo].[route] ON 
+GO
+INSERT [dbo].[route] ([rowid], [r_no], [r_name], [remark]) VALUES (1, N'001', N'削皮棒', NULL)
+GO
+INSERT [dbo].[route] ([rowid], [r_no], [r_name], [remark]) VALUES (2, N'002', N'冷精異形棒(六角)', NULL)
+GO
+INSERT [dbo].[route] ([rowid], [r_no], [r_name], [remark]) VALUES (1002, N'003', N'冷精異形棒(扁圓)', NULL)
+GO
+INSERT [dbo].[route] ([rowid], [r_no], [r_name], [remark]) VALUES (1010, N'004', N'削皮棒1', NULL)
+GO
+SET IDENTITY_INSERT [dbo].[route] OFF
+GO
+SET IDENTITY_INSERT [dbo].[route_detail] ON 
+GO
+INSERT [dbo].[route_detail] ([rowid], [r_no], [sort_no], [proc_no], [min_value], [max_value], [remark]) VALUES (1, N'001', N'01', N'P01', CAST(950.0000 AS Decimal(18, 4)), CAST(1350.0000 AS Decimal(18, 4)), NULL)
+GO
+INSERT [dbo].[route_detail] ([rowid], [r_no], [sort_no], [proc_no], [min_value], [max_value], [remark]) VALUES (2, N'001', N'02', N'P02', NULL, NULL, NULL)
+GO
+INSERT [dbo].[route_detail] ([rowid], [r_no], [sort_no], [proc_no], [min_value], [max_value], [remark]) VALUES (3, N'001', N'03', N'P03', NULL, NULL, NULL)
+GO
+INSERT [dbo].[route_detail] ([rowid], [r_no], [sort_no], [proc_no], [min_value], [max_value], [remark]) VALUES (4, N'002', N'01', N'P04', NULL, NULL, NULL)
+GO
+INSERT [dbo].[route_detail] ([rowid], [r_no], [sort_no], [proc_no], [min_value], [max_value], [remark]) VALUES (5, N'002', N'02', N'P05', NULL, NULL, NULL)
+GO
+INSERT [dbo].[route_detail] ([rowid], [r_no], [sort_no], [proc_no], [min_value], [max_value], [remark]) VALUES (6, N'002', N'03', N'P03', NULL, NULL, NULL)
+GO
+INSERT [dbo].[route_detail] ([rowid], [r_no], [sort_no], [proc_no], [min_value], [max_value], [remark]) VALUES (7, N'003', N'01', N'P04', NULL, NULL, NULL)
+GO
+INSERT [dbo].[route_detail] ([rowid], [r_no], [sort_no], [proc_no], [min_value], [max_value], [remark]) VALUES (8, N'003', N'02', N'P05', NULL, NULL, NULL)
+GO
+INSERT [dbo].[route_detail] ([rowid], [r_no], [sort_no], [proc_no], [min_value], [max_value], [remark]) VALUES (9, N'003', N'03', N'P03', NULL, NULL, NULL)
+GO
+INSERT [dbo].[route_detail] ([rowid], [r_no], [sort_no], [proc_no], [min_value], [max_value], [remark]) VALUES (24, N'004', N'01', N'12', CAST(0.0000 AS Decimal(18, 4)), CAST(0.0000 AS Decimal(18, 4)), NULL)
+GO
+SET IDENTITY_INSERT [dbo].[route_detail] OFF
+GO
+SET IDENTITY_INSERT [dbo].[users] ON 
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (1, N'admin', N'王大明', N'A', N'jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=', N'a@123.com', CAST(N'2018-02-25' AS Date), N'1324567', N'Q123456780', N'0912345678', NULL)
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (2, N'001', N'陳小華', N'U', N'ej5rFst19I+4l+/zrnMvMVT20gO1PzNmDwG0w7a8Lfk=', N'c@123.com', CAST(N'1988-03-25' AS Date), N'台中市大里區善化路195號', N'Q223515470', N'0911123456', NULL)
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (3, N'003', N'謝凱晨', N'U', N'iMBBO/7x0FcKim+ceAqNLJ6QxNEHVR1ivzzsn/H1tjQ=', N's@123.com', CAST(N'1985-08-25' AS Date), N'台中市北區雙十路一段156號', N'B123456789', N'0913456825', NULL)
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (4, N'002', N'王昭胤', N'U', N'ej5rFst19I+4l+/zrnMvMVT20gO1PzNmDwG0w7a8Lfk=', N'w@123.313', CAST(N'1998-05-12' AS Date), N'彰化縣鹿港鎮鹿和路三段124巷15號', N'A123456789', N'0923456789', NULL)
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (5, N'004', N'林雅玲', N'U', N'ej5rFst19I+4l+/zrnMvMVT20gO1PzNmDwG0w7a8Lfk=', N'la@123.asd', CAST(N'1999-05-24' AS Date), N'桃園市桃園區正康三街76巷7號5樓', N'C235485987', N'0978536541', NULL)
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (6, N'005', N'許憲書', N'U', N'ej5rFst19I+4l+/zrnMvMVT20gO1PzNmDwG0w7a8Lfk=', N'xucia@11.55', CAST(N'1999-06-08' AS Date), N'台北市文山區景文街110巷22號', N'V235788545', N'0988756351', NULL)
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (7, N'006', N'蔡逸群', N'U', N'ej5rFst19I+4l+/zrnMvMVT20gO1PzNmDwG0w7a8Lfk=', N't@123.213', CAST(N'1979-01-20' AS Date), N'台中市大里區善化路195號', N'Q123456789', N'0912345658', NULL)
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (8, N'007', N'林婉春', N'U', N'ej5rFst19I+4l+/zrnMvMVT20gO1PzNmDwG0w7a8Lfk=', N'Lin@123.asd', CAST(N'1978-04-22' AS Date), N'台南市東區長榮路三段195號', N'G235744158', N'0963587252', NULL)
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (9, N'008', N'黃進尹', N'U', N'ej5rFst19I+4l+/zrnMvMVT20gO1PzNmDwG0w7a8Lfk=', N'WJI@123.12', CAST(N'1970-06-17' AS Date), N'台北市大同區承德路二段265號', N'D124458652', N'0988757545', NULL)
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (10, N'009', N'林宜蓁', N'U', N'ej5rFst19I+4l+/zrnMvMVT20gO1PzNmDwG0w7a8Lfk=', N'Lyj@123.4asd', CAST(N'1968-05-22' AS Date), N'桃園市大園區中山南路一段34巷12號', N'R245278541', N'0912587451', NULL)
+GO
+INSERT [dbo].[users] ([rowid], [m_account], [m_name], [role_no], [pass_user], [email_user], [birthday], [address], [id], [phone], [remark]) VALUES (14, N'010', N'張宜正', N'U', N'ej5rFst19I+4l+/zrnMvMVT20gO1PzNmDwG0w7a8Lfk=', N'Zhang@asd.asd', CAST(N'1965-11-25' AS Date), N'新竹市北區經國路二段9號', N'H125877454', N'0957586352', NULL)
+GO
+SET IDENTITY_INSERT [dbo].[users] OFF
+GO
+SET IDENTITY_INSERT [dbo].[workorder] ON 
+GO
+INSERT [dbo].[workorder] ([rowid], [workorder_no], [workorder_date], [oder_no], [product_no], [route_no], [qty], [remark]) VALUES (1, N'20201028001', CAST(N'2020-10-28' AS Date), N'20201028001', N'P01', N'001', 1000, NULL)
+GO
+INSERT [dbo].[workorder] ([rowid], [workorder_no], [workorder_date], [oder_no], [product_no], [route_no], [qty], [remark]) VALUES (2, N'20201028002', CAST(N'2020-10-28' AS Date), N'20201028002', N'C01', N'002', 1500, NULL)
+GO
+INSERT [dbo].[workorder] ([rowid], [workorder_no], [workorder_date], [oder_no], [product_no], [route_no], [qty], [remark]) VALUES (3, N'20201028003', CAST(N'2020-10-28' AS Date), N'20201028003', N'P01', N'001', 1300, NULL)
+GO
+INSERT [dbo].[workorder] ([rowid], [workorder_no], [workorder_date], [oder_no], [product_no], [route_no], [qty], [remark]) VALUES (4, N'20201028004', CAST(N'2020-10-28' AS Date), N'20201028004', N'C01', N'002', 800, NULL)
+GO
+INSERT [dbo].[workorder] ([rowid], [workorder_no], [workorder_date], [oder_no], [product_no], [route_no], [qty], [remark]) VALUES (5, N'20201028005', CAST(N'2020-10-28' AS Date), N'20201028005', N'P01', N'001', 1000, NULL)
+GO
+INSERT [dbo].[workorder] ([rowid], [workorder_no], [workorder_date], [oder_no], [product_no], [route_no], [qty], [remark]) VALUES (6, N'20201028006', CAST(N'2020-10-28' AS Date), N'20201028006', N'P01', N'001', 800, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[workorder] OFF
+GO
+SET IDENTITY_INSERT [dbo].[workorder_detail] ON 
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (1, N'20201028001', N'01', N'P01', N'A01', 1000, 6, 4, 990, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (2, N'20201028001', N'02', N'P02', N'B02', 990, 5, 0, 985, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (3, N'20201028001', N'03', N'P03', N'C02', 985, 3, 2, 980, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (4, N'20201028002', N'01', N'P04', N'D01', 1500, 5, 2, 1493, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (5, N'20201028002', N'02', N'P05', N'E01', 1493, 3, 1, 1489, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (6, N'20201028002', N'03', N'P03', N'C02', 1489, 0, 0, 1489, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (7, N'20201028003', N'01', N'P01', N'A02', 1300, 2, 2, 1296, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (8, N'20201028003', N'02', N'P02', N'B01', 1296, 1, 1, 1294, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (9, N'20201028003', N'03', N'P03', N'C01', 1294, 3, 1, 1290, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (10, N'20201028004', N'01', N'P04', N'D02', 800, 5, 2, 793, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (11, N'20201028004', N'02', N'P05', N'E02', 793, 2, 1, 790, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (12, N'20201028004', N'03', N'P03', N'C01', 790, 1, 1, 788, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (13, N'20201028005', N'01', N'P01', N'A01', 1000, 1, 3, 996, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (14, N'20201028005', N'02', N'P02', N'B02', 996, 3, 0, 993, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (15, N'20201028005', N'03', N'P03', N'C02', 993, 1, 1, 991, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (16, N'20201028006', N'01', N'P01', N'A01', 800, 1, 1, 798, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (17, N'20201028006', N'02', N'P02', N'B02', 798, 2, 0, 796, NULL)
+GO
+INSERT [dbo].[workorder_detail] ([rowid], [workorder_no], [sort_no], [process_no], [machine_no], [in_qty], [bad_qty], [adj_qty], [out_qty], [remark]) VALUES (18, N'20201028006', N'03', N'P03', N'C02', 796, 1, 0, 793, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[workorder_detail] OFF
+GO
+ALTER TABLE [dbo].[re_complete_detail] ADD  CONSTRAINT [DF_re_complete_detail_value1]  DEFAULT ((0)) FOR [value1]
+GO
+ALTER TABLE [dbo].[re_complete_detail] ADD  CONSTRAINT [DF_re_complete_detail_value2]  DEFAULT ((0)) FOR [value2]
+GO
+ALTER TABLE [dbo].[re_complete_detail] ADD  CONSTRAINT [DF_re_complete_detail_value3]  DEFAULT ((0)) FOR [value3]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'機台主檔' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'machine', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'機台編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'machine', @level2type=N'COLUMN',@level2name=N'm_No'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'機台名稱' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'machine', @level2type=N'COLUMN',@level2name=N'm_Name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'運作狀況 G:運作中 R:無運作 Y:維修中' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'machine', @level2type=N'COLUMN',@level2name=N'status'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'machine', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'原物料主檔' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'material', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'物料編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'material', @level2type=N'COLUMN',@level2name=N'm_No'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'物料名稱' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'material', @level2type=N'COLUMN',@level2name=N'm_Name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'來源工廠編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'material', @level2type=N'COLUMN',@level2name=N'factory_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'形狀(圓胚,方胚)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'material', @level2type=N'COLUMN',@level2name=N'shape_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'方形長' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'material', @level2type=N'COLUMN',@level2name=N'shape_length'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'圓形直徑' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'material', @level2type=N'COLUMN',@level2name=N'shape_diameter'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'長度' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'material', @level2type=N'COLUMN',@level2name=N'length'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'material', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'訂單主檔' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'order', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'訂單編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'order', @level2type=N'COLUMN',@level2name=N'order_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'客戶編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'order', @level2type=N'COLUMN',@level2name=N'client_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'訂單日期' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'order', @level2type=N'COLUMN',@level2name=N'order_date'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'order', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'訂單主檔明細' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'order_detail', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'訂單編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'order_detail', @level2type=N'COLUMN',@level2name=N'order_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'產品編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'order_detail', @level2type=N'COLUMN',@level2name=N'product_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製令編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'order_detail', @level2type=N'COLUMN',@level2name=N'workoder_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'order_detail', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製程主檔' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'process', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製程編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'process', @level2type=N'COLUMN',@level2name=N'proc_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製程名稱' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'process', @level2type=N'COLUMN',@level2name=N'proc_name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'process', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'產品主檔' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'product', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'產品編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'product', @level2type=N'COLUMN',@level2name=N'product_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'產品名稱' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'product', @level2type=N'COLUMN',@level2name=N'product_name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'角色 P:成品' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'product', @level2type=N'COLUMN',@level2name=N'role'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'直徑' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'product', @level2type=N'COLUMN',@level2name=N'Diameter'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'長度' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'product', @level2type=N'COLUMN',@level2name=N'Length'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'誤差' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'product', @level2type=N'COLUMN',@level2name=N'Diameter_Tolerance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'真直度' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'product', @level2type=N'COLUMN',@level2name=N'Straightness'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'product', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'完工回報單主檔' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'訂單編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete', @level2type=N'COLUMN',@level2name=N'order_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'回報單編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete', @level2type=N'COLUMN',@level2name=N're_complete_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'回報單日期' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete', @level2type=N'COLUMN',@level2name=N're_complete_date'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'完工回報單主檔明細' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'回報單編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N're_complete_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製程編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'proc_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'機台編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'mach_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'機台數據1' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'value1'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'機台數據2' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'value2'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'機台數據3' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'value3'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'員工編號(操作者)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'user_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'開始時間' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'start_time'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'結束時間' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'end_time'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'數量回報' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'qty'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N're_complete_detail', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'流程主檔' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'流程編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route', @level2type=N'COLUMN',@level2name=N'r_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'流程名稱' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route', @level2type=N'COLUMN',@level2name=N'r_name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'流程主檔明細' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route_detail', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'流程編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route_detail', @level2type=N'COLUMN',@level2name=N'r_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製程順序' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route_detail', @level2type=N'COLUMN',@level2name=N'sort_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製程編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route_detail', @level2type=N'COLUMN',@level2name=N'proc_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'最小數值' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route_detail', @level2type=N'COLUMN',@level2name=N'min_value'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'最大數值' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route_detail', @level2type=N'COLUMN',@level2name=N'max_value'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'route_detail', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'員工主檔' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'帳號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'm_account'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'姓名' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'm_name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'角色' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'role_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'密碼' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'pass_user'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'信箱' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'email_user'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'生日' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'birthday'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'地址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'address'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'身分證' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'id'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'電話' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'phone'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'users', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製令主檔' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製令編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder', @level2type=N'COLUMN',@level2name=N'workorder_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製令日期' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder', @level2type=N'COLUMN',@level2name=N'workorder_date'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'訂單編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder', @level2type=N'COLUMN',@level2name=N'oder_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'產品編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder', @level2type=N'COLUMN',@level2name=N'product_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'流程編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder', @level2type=N'COLUMN',@level2name=N'route_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'數量' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder', @level2type=N'COLUMN',@level2name=N'qty'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製令主檔明細' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder_detail', @level2type=N'COLUMN',@level2name=N'rowid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製令編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder_detail', @level2type=N'COLUMN',@level2name=N'workorder_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製程順序' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder_detail', @level2type=N'COLUMN',@level2name=N'sort_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'製程編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder_detail', @level2type=N'COLUMN',@level2name=N'process_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'機台編號' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder_detail', @level2type=N'COLUMN',@level2name=N'machine_no'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'輸入數量' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder_detail', @level2type=N'COLUMN',@level2name=N'in_qty'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'損壞數量' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder_detail', @level2type=N'COLUMN',@level2name=N'bad_qty'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'須調整數量' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder_detail', @level2type=N'COLUMN',@level2name=N'adj_qty'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'輸出數量' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder_detail', @level2type=N'COLUMN',@level2name=N'out_qty'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'備註' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'workorder_detail', @level2type=N'COLUMN',@level2name=N'remark'
+GO

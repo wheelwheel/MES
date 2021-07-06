@@ -1,0 +1,239 @@
+﻿@model MES.Models.ProcessViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "製程";
+}
+
+@section styles {
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+}
+
+
+@*<div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+            <div class="col-6">
+                <table class="table">
+                    <tr>
+                        <td colspan="6">
+                            <h5 class="text-danger">製程</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="nowrap"> @Html.ActionLink("新增", "Create", "Process", null, new { @class = "btn btn-primary" })</td>
+                        <td nowrap="nowrap">
+                            @Html.DisplayNameFor(m => m.processList.First().proc_no)
+                        </td>
+                        <td nowrap="nowrap">
+                            @Html.DisplayNameFor(m => m.processList.First().proc_name)
+                        </td>
+                        <td nowrap="nowrap">
+                            @Html.DisplayNameFor(m => m.processList.First().remark)
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    @foreach (var item in Model.processList)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.proc_no)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.proc_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.remark)
+                            </td>
+                            <td nowrap="nowrap">
+                                @Html.ActionLink("修改", "Edit", "Process", new { id = item.rowid }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("刪除", "Delete", "Process", new { id = item.rowid }, new { @class = "btn btn-primary" })
+                            </td>
+                        </tr>
+
+                    }
+                    <tr>
+                        <td colspan="6">
+                            @Html.PagedListPager((IPagedList)Model.processList, x => Url.Action("MasterPage", new { page = x }))
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>*@
+
+<!--<div class="row justify-content-center m-3">
+    <div class="col-md-7">-->
+@*<div class="container">*@
+<!--<div class="h2 mt-2">
+    <span class="text-primary">製程列表</span>
+</div>
+<a class="btn btn-success" title="商品資料" onclick="PopupForm('@Url.Action("Create" , "Process")' , '新增商品')">
+    <i class="fa fa-plus" style="padding-right:2px;"></i>新增商品
+</a>
+<div class="table-responsive">
+    <table class="table table-striped custom-table display " id="myDataTable">
+        <thead>
+            <tr scope="col">
+                <th>
+                    編輯
+                </th>
+                <th nowrap="nowrap">
+                    製程編號
+                </th>
+                <th nowrap="nowrap">
+                    製程名稱
+                </th>
+                <th nowrap="nowrap">
+                    備註
+                </th>
+            </tr>
+        </thead>
+    </table>
+</div>-->
+@*</div>*@
+<!--</div>
+</div>
+<script>
+    var Popup, dataTable;
+    $(document).ready(function () {
+         dataTable = $('#myDataTable').DataTable({
+                "ajax": {
+                    "url": '@Url.Action("GetDataList" , "Process")',
+                    "type": "get",
+                    "datatype": "json"
+                },
+                "language": {
+                    url: "@Url.Content("~\\Content\\lang\\Chinese-traditional.json")"
+                },
+                "order": [[ 0, "asc" ]],
+             "columns": [
+                 {
+                     "data": "Id",
+                     "render": function (data) {
+                         return "<a title='修改' class='btn btn-primary btn-sm' style='margin-left:5px;' onclick=PopupFrom ('@Url.Action("Edit", "Process")/" + data + "')><i class='fa fa-pencil-square-o'></i></a>"+
+                             "<a title='刪除' class='btn btn-primary btn-sm' style='margin-left:5px;' onclick=Delete (" + data + ")><i class='fa fa-trash'></i></a>";
+                     },
+                     "orderable": false,
+                     "searchable": false
+                 },
+                    { "data": "proc_no"},
+                    { "data": "proc_name"},
+                    { "data": "remark" }
+                ]
+         });
+    });
+
+    function PopupForm(url) {
+        var formDiv = $('<div/>');
+        $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: '編輯視窗',
+                    height: 500,
+                    width: 600,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+                });
+            });
+    }
+
+    function SubmitForm(form) {
+        $.validator.unobtrusive.parse(form);
+        if ($(form).valid()) {
+            $.ajax({
+                type : "POST",
+                url : form.action,
+                data : $(form).serialize(),
+                success : function (data) {
+                    if (data.success)
+                    {
+                        Popup.dialog('close');
+                        dataTable.ajax.reload();
+
+                        $.notify(data.message, {
+                            globalPosition: "top center",
+                            className : "success"
+                        })
+                    }
+                }
+            });
+        }
+        return false;
+    }
+
+    function Delete(id) {
+        if (confirm('是否確定要刪除?'))
+        {
+            $.ajax({
+                type : "POST",
+                url: '@Url.Action("Delete", "Process" )/' + id,
+                success: function (data) {
+                    if (data.success) {
+                        dataTable.ajax.reload();
+
+                        $.notify(data.message, {
+                            globalPosition: "top center",
+                            className: "success"
+                        })
+                    }
+                }
+            });
+        }
+    }
+
+</script>-->
+
+<div class="container-fluid mt-3">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-10 col-xs-12">
+            <div class="panel panel-group border border-secondary">
+                <div class="panel panel-primary ">
+                    <div class="panel panel-heading  bg-info">
+                        <h4>製程資料維護</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <td class="">
+                                    @Html.ActionLink("新增", "Create", "Process", null, new { @class = "btn btn-success" })
+                                </td>
+                                <td class="">
+                                    @Html.DisplayNameFor(m => m.processList.First().proc_no)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayNameFor(m => m.processList.First().proc_name)
+                                </td>
+                            </tr>
+                            @foreach (var item in Model.processList)
+                            {
+                                <tr>
+                                    <td class="">
+                                        @Html.ActionLink("修改", "Edit", "Process", new { id = item.rowid }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("刪除", "Delete", "Process", new { id = item.rowid }, new { @class = "btn btn-danger", onclick = "return confirm('是否確定要刪除?');" })
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.proc_no)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.proc_name)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                        <div class="bg-secondary pt-1">
+                            @Html.PagedListPager((IPagedList)Model.processList, x => Url.Action("MasterPage", new { page = x }))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

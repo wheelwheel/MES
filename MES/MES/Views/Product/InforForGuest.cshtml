@@ -1,0 +1,147 @@
+﻿@model IEnumerable<MES.Models.ProductViewModel>
+
+@{
+    ViewBag.Title = "產品資訊";
+}
+
+<h2 style="text-align:center;margin-top:10px;" class="pt-2">產品資訊</h2>
+
+
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/css/Infor/infor.css")">
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/css/Infor/infor_product_guest.css")">
+
+
+
+<div class="pt-2">
+    <div class="master">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.order_no)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_no)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_name)
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.order_no)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_no)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_name)
+                        </td>
+                    </tr>
+                </tbody>
+                break;
+            }
+        </table>
+    </div>
+    <div class="specification">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Diameter)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Length)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Diameter_Tolerance)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Straightness)
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Diameter)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Length)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Diameter_Tolerance)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Straightness)
+                        </td>
+                    </tr>
+                </tbody>
+                break;
+            }
+        </table>
+    </div>
+    <div class="data">
+        <table>
+            <thead>
+                <tr>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.proc_no)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.proc_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.mach_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.user_no)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.start_time)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.end_time)
+                    </th>
+
+
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.proc_no)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.proc_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.mach_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user_no)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.start_time)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.end_time)
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+    <div class="row justify-content-center mt-3">
+        @Html.ActionLink("重新搜尋", "EnTraceCode", "Product", null, new { @class = "btn btn-success col-md-2 col-5" })
+    </div>
+</div>

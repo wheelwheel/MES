@@ -1,0 +1,416 @@
+﻿@model MES.Models.ProductViewModel
+@{
+    ViewBag.Title = "首頁";
+}
+
+<link href="@Url.Content("~/css/searchbar/searchbar.css")" rel="stylesheet" />
+<link href="@Url.Content("~/css/index/plugins/themefisher-font/style.css")" rel="stylesheet" />
+<link href="@Url.Content("~/css/index/css/style.css")" rel="stylesheet" />
+
+
+
+<style>
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .move-text {
+        padding: 2vmin;
+        background: rgba(204,230,211, 0.4);
+        height: 45vmin;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .section {
+        padding: 12vh 0 19vh 0;
+    }
+
+    @@media (max-width: 770px) {
+        .section {
+            padding: 25vh 0 19vh 0;
+        }
+        .rwdhead {
+            font-size: 12vmin;
+            color: darkblue;
+        }
+
+        .rwdtext {
+            font-size: 8vmin;
+            color: darkblue;
+        }
+
+        .move-text {
+            padding: 5vmin;
+            height: 85vmin;
+        }
+    }
+
+    @@media (min-width: 770px) and (max-width: 1200px) {
+        .section {
+            padding: 20vh 0 19vh 0;
+        }
+        .rwdhead {
+            font-size: 7vmin;
+            color: darkblue;
+        }
+
+        .rwdtext {
+            font-size: 5vmin;
+            color: darkblue;
+        }
+
+        .move-text {
+            padding: 5vmin;
+            height: 50vmin;
+        }
+    }
+
+    @@media (min-width: 1200px) {
+
+        .rwdhead {
+            font-size: 6vmin;
+            color: darkblue;
+        }
+
+        .rwdtext {
+            font-size: 5vmin;
+            color: darkblue;
+        }
+
+        .move-text {
+            padding: 2vmin;
+            height: 45vmin;
+        }
+    }
+
+
+
+    .pb-creativity-gallery {
+        padding: 0;
+        background: #222222;
+        padding-bottom: 30px;
+    }
+
+        .pb-creativity-gallery > .container-fluid > button {
+            display: block;
+            margin: 60px auto;
+            padding: 15px 20px;
+        }
+
+    .pb-creativity-no-gutter > .col-md-4 {
+        overflow: hidden;
+    }
+
+        .pb-creativity-no-gutter > .col-md-4 > img {
+            transition: all .2s ease-in-out;
+        }
+
+            .pb-creativity-no-gutter > .col-md-4 > img:hover {
+                transform: scale(1.1);
+            }
+
+    .pb-creativity-no-gutter > [class*='col-'] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+
+    .img-responsive {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+
+    .carousel-inner > .carousel-item {
+        transition: 0.8s ease-in-out;
+    }
+
+    .carousel {
+        position: inherit;
+    }
+</style>
+
+
+
+<script>
+    $(document).ready(function () {
+        initAutoType();
+    });
+
+    var initAutoType = function () {
+        var types = ["提高產品辨識性，培養消費者認同...", "提高生產品質，增加產品競爭力....", "加強風險控管與責任釐清..."];
+        var words = $("#first-words");
+
+        var stopType = false;     //用于停止自动打字的
+
+        var index = 0;
+        var tempWords = "";
+        var isNext = false;
+        var time = 200;
+
+        var startType = setInterval(function () {
+            if (stopType) {
+                //如果需要停止打字
+                clearInterval(startType);
+            }
+            if (tempWords.length === 0) {
+                //如果删完了，就开始
+                if (isNext) {
+                    index++;
+                    index = index % 3;
+                    isNext = false;
+                }
+                tempWords = types[index].substring(0, tempWords.length + 1);
+            } else if (tempWords.length === types[index].length && isNext === false) {
+                //如果已经到头了，就要删去
+                // tempWords = tempWords.substring(0,tempWords.length-1);
+                isNext = true;
+                time = 5000;
+            } else {
+                //如果既没删完也没显示完
+                if (isNext) {
+                    //如果是在减少
+                    tempWords = tempWords.substring(0, tempWords.length - 1);
+                    time = 150;
+                }
+                else {
+                    //如果在增多
+                    time = 200;
+                    tempWords = types[index].substring(0, tempWords.length + 1);
+                }
+            }
+            words.html(tempWords + "|");
+        }, time);
+    };
+
+</script>
+
+
+
+<section class="backgroundimage carousel slide" id="index" data-ride="carousel" data-interval="5000">
+    <ul class="carousel-indicators">
+        <li data-target="#index" data-slide-to="0" class="active"></li>
+        <li data-target="#index" data-slide-to="1"></li>
+        <li data-target="#index" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="" src="~/Images/background.jpg" alt="First slide" style="display:block; margin-left:0;">
+        </div>
+        <div class="carousel-item">
+            <img class="" src="~/Images/background1.jpg" alt="Second slide" style="display:block; margin:auto;">
+        </div>
+        <div class="carousel-item">
+            <img class="" src="~/Images/background2.jpg" alt="Third slide" style="display:block; margin:auto;">
+        </div>
+        @*<a class="carousel-control-prev" href="#index" data-slide="prev">
+                <span class="fa fa-chevron-left fa-3x text-dark"></span>
+            </a>
+            <a class="carousel-control-next" href="#index" data-slide="next">
+                <span class="fa fa-chevron-right fa-3x text-dark"></span>
+            </a>*@
+
+        <div class="container-fluid text-primary ">
+            <div class="row justify-content-center ">
+                <div class="mbr-white col-md-12 col-lg-10 align-self-center move-text" style="margin-top:20vh">
+                    <h3 class="mbr-section-title mbr-bold mbr-fonts-style align-center font-weight-bold rwdhead">
+                        歡迎使用
+                    </h3>
+                    <h3 class="mbr-section-title mbr-bold mbr-fonts-style align-center font-weight-bold rwdhead">
+                        製程管理系統
+                    </h3>
+                    <div class="typed-text pb-2 align-centers rwdtext">
+                        <span class="mbr-section-subtitle mbr-fonts-style ">
+                            使用本系統可以幫助您
+                        </span>
+                    </div>
+                    <div class="typed-text pb-3 align-centers rwdtext">
+                        <span class="mbr-section-subtitle mbr-fonts-style">
+                            <span class="animated-element mbr-bold" data-speed="100" data-words="1"></span><span id="first-words" class="typed-cursor">|</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*</div>*@
+</section>
+
+
+
+<section id="about" class="bg-2 about section">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+
+            <!-- section title -->
+            <div class="title text-center wow fadeIn col-md-12" data-wow-duration="1500ms">
+                <h2>關於 <span class="color">我們</span> </h2>
+                <div class="border"></div>
+            </div>
+            <!-- /section title -->
+            <!-- About item -->
+            <div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms">
+                <div class="block">
+                    <div class="icon-box">
+                        <i class="fa fa-thumbs-up fa-lg"></i>
+                    </div>
+                    <!-- Express About Yourself -->
+                    <div class="content text-center">
+                        <h3 class="ddd">提高產品辨識性</h3>
+                        <h3 class="ddd">培養消費者認同</h3>
+                        <p class="text-left">讓生產者、供應商資訊一目瞭然，消費者更容易找到優質產品，同時能夠幫助生產者和消 費者溝通，進而培養認同感。</p>
+                        <br />
+                    </div>
+                </div>
+            </div>
+            <!-- End About item -->
+            <!-- About item -->
+            <div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="250ms">
+                <div class="block">
+                    <div class="icon-box">
+                        <i class="fa fa-line-chart fa-lg"></i>
+                    </div>
+                    <!-- Express About Yourself -->
+                    <div class="content text-center">
+                        <h3>提高生產品質</h3>
+                        <h3>增加產品競爭力</h3>
+                        <p class="text-left">透過製程追蹤，有效控管產品在每個製程的生產品質，確保產出結果在市場具有競爭力。</p>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+            <!-- End About item -->
+            <!-- About item -->
+            <div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="500ms">
+                <div class="block kill-margin-bottom">
+                    <div class="icon-box">
+                        <i class="fa fa-check-square-o fa-lg"></i>
+                    </div>
+                    <!-- Express About Yourself -->
+                    <div class="content text-center">
+                        <h3>加強風險控管</h3>
+                        <h3>與責任釐清</h3>
+                        <p class="text-left">若生產的某項產品因故必須被追回下架，可藉由批次與追溯碼鑑別需要回收的產品，降低作業成本並縮短回收的時間，同時產品的辨識性也足以保障生產者</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End About item -->
+
+        </div> 		<!-- End row -->
+    </div>   	<!-- End container -->
+</section>
+
+
+<section id="product" class="portfolio section ">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-12">
+                <!-- section title -->
+                <div class="title text-center mb-3">
+                    <h2>產品 <span class="color">列表</span></h2>
+                    <div class="border"></div>
+                </div>
+                <!-- /section title -->
+            </div> <!-- /end col-lg-12 -->
+        </div> <!-- end row -->
+        <div class="row filtr-container multiple-items mb-5">
+            <div class=" filtr-item col-md-4" data-category="development">
+                <div class="portfolio-block">
+                    <img class="img-responsive" src="~/Images/product/product1.jpg" alt="">
+
+                </div>
+            </div>
+            <div class="filtr-item col-md-4" data-category="design">
+                <div class="portfolio-block">
+                    <img class="img-responsive" src="~/Images/product/product2.jpg" alt="">
+
+                </div>
+            </div>
+            <div class="filtr-item col-md-4" data-category="design, development">
+                <div class="portfolio-block">
+                    <img class="img-responsive" src="~/Images/product/product3.jpg" alt="">
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="cover" class="pl-3 pr-3">
+            @using (Html.BeginForm("EnTraceCode", "Product"))
+            {
+                @Html.ValidationMessageFor(model => model.order_no, "", new { @class = "text-danger d-flex justify-content-center" })
+                <div class="tb">
+                    <div class="td">
+                        @Html.EditorFor(model => model.order_no, new { htmlAttributes = new { placeholder = "查詢產品編號" } })
+                    </div>
+                    <div class="td">
+                        <button type="submit">
+                            <i class="fa fa-search fa-5x text-white" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div> <!-- end container -->
+</section> <!-- End section -->
+
+<section id="contact-us" class="contact-us section-bg section">
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+            <!-- section title -->
+            <div class="title text-center fadeIn col-md-12 pr-0 align-self-center" data-wow-duration="500ms">
+                <h2>保持 <span class="color ">聯繫</span></h2>
+                <div class="border"></div>
+            </div>
+            <!-- /section title -->
+            <!-- Contact Details -->
+            <div class="contact-info col-lg-2 fadeInUp" data-wow-duration="500ms">
+                <div class="row justify-content-center">
+                    <div class="contact-details  col-6 col-lg-12">
+                        <div class="con-info clearfix ">
+                            <i class="fa fa-map-marker fa-2x p-2"></i>
+                            <span>326桃園市楊梅區幼獅路二段3號</span>
+                        </div>
+                        <div class="con-info clearfix">
+                            <i class="fa fa-phone fa-2x p-2"></i>
+                            <span>03-1234567</span>
+                        </div>
+                    </div>
+                    <div class="contact-details  col-6 col-lg-12">
+                        <div class="con-info clearfix">
+                            <i class="fa  fa-fax fa-2x p-2" ></i>
+                            <span>+886-31-234-567</span>
+                        </div>
+                        <div class="con-info clearfix">
+                            <i class="fa fa-envelope fa-2x p-2"></i>
+                            <span>123@123.com</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- / End Contact Details -->
+            <iframe class="col-lg-6 col-12" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14471.667252580726!2d121.18249195!3d24.93490365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc24080034849b3e3!2z5Yue5YuV6YOo5Yue5YuV5Yqb55m85bGV572y5qGD56u56IuX5YiG572y5bm8542F6IG35qWt6KiT57e05aC0!5e0!3m2!1szh-TW!2stw!4v1622597678925!5m2!1szh-TW!2stw" height="510" frameborder="1" loading="lazy"></iframe>
+
+        </div> <!-- end row -->
+
+    </div> <!-- end container -->
+
+</section>
+
+
+
+
+
+
+
+
+
+

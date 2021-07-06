@@ -1,0 +1,363 @@
+﻿@model IEnumerable<MES.Models.users>
+
+@{
+    ViewBag.Title = "Infor";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/css/user/main.css")">
+
+
+
+<style>
+    body {
+        font-family: sans-serif;
+        background-color: #eeeeee;
+    }
+
+    .file-upload {
+        background-color: #ffffff;
+        width: 600px;
+        margin: 150px auto;
+        padding: 20px;
+    }
+
+
+
+    .file-upload-btn {
+        width: 100%;
+        margin: 0;
+        color: #fff;
+        background: #1FB264;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        border-bottom: 4px solid #15824B;
+        transition: all .2s ease;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .file-upload-btn-cancel {
+        width: 100%;
+        margin: 0;
+        color: #fff;
+        background: #F72222;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        border-bottom: 4px solid #9A1919;
+        transition: all .2s ease;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+
+    .file-upload-btn:hover {
+        background: #1AA059;
+        color: #ffffff;
+        transition: all .2s ease;
+        cursor: pointer;
+    }
+
+    .file-upload-btn-cancel:hover {
+        background: #E13737;
+        color: #ffffff;
+        transition: all .2s ease;
+        cursor: pointer;
+    }
+
+    .file-upload-btn:active, .file-upload-btn-cancel:active {
+        border: 0;
+        transition: all .2s ease;
+    }
+
+    .file-upload-content {
+        display: none;
+        text-align: center;
+    }
+
+    .file-upload-input {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .image-upload-wrap {
+        margin-top: 20px;
+        border: 4px dashed #1FB264;
+        position: relative;
+    }
+
+        .image-dropping,
+        .image-upload-wrap:hover {
+            background-color: #1FB264;
+            border: 4px dashed #ffffff;
+        }
+
+    .image-title-wrap {
+        padding: 0 15px 15px 15px;
+        color: #222;
+    }
+
+    .drag-text {
+        text-align: center;
+    }
+
+        .drag-text h3 {
+            font-weight: 100;
+            text-transform: uppercase;
+            color: #15824B;
+            padding: 60px 0;
+        }
+
+    .file-upload-image {
+        max-height: 200px;
+        max-width: 200px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .remove-image {
+        width: 200px;
+        margin: 0;
+        color: #fff;
+        background: #cd4535;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        border-bottom: 4px solid #b02818;
+        transition: all .2s ease;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+        .remove-image:hover {
+            background: #c13b2a;
+            color: #ffffff;
+            transition: all .2s ease;
+            cursor: pointer;
+        }
+
+        .remove-image:active {
+            border: 0;
+            transition: all .2s ease;
+        }
+
+    @@media only screen and (max-width: 600px) {
+        .file-upload {
+            width: auto;
+            margin: 0;
+        }
+
+        .file-upload-btn, .file-upload-btn-cancel {
+            margin-top: 15px;
+        }
+    }
+</style>
+
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.image-upload-wrap').hide();
+
+                $('.file-upload-image').attr('src', e.target.result);
+                $('.file-upload-content').show();
+
+                $('.image-title').html(input.files[0].name);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        } else {
+            removeUpload();
+        }
+    }
+
+    function removeUpload() {
+        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+        $('.file-upload-content').hide();
+        $('.image-upload-wrap').show();
+    }
+    $('.image-upload-wrap').bind('dragover', function () {
+        $('.image-upload-wrap').addClass('image-dropping');
+    });
+    $('.image-upload-wrap').bind('dragleave', function () {
+        $('.image-upload-wrap').removeClass('image-dropping');
+    });
+
+</script>
+
+@if (!UserAccount.UploadImageMode)
+{
+    <div class="container emp-profile">
+        <div class="row gutters">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="">
+                        <div class="account-settings">
+
+                            <div class="user-profile">
+                                <div class="user-avatar">
+                                    <img src="@Url.Content(@UserAccount.UserImageUrl)">
+                                </div>
+                                <div class="user-avatar">
+                                    @Html.ActionLink("Change Photo", "UploadImage", "User", new { @class = "btn btn-success form-button" })
+                                </div>
+                                @foreach (var item in Model)
+                                {
+                                    <h5 class="user-name">@Html.DisplayFor(modelItem => item.m_name)</h5>
+                                    <h6 class="user-email">@Html.DisplayFor(modelItem => item.email_user)</h6>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-2 text-primary">個人資料</h6>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>@Html.DisplayNameFor(model => model.m_account)</label>
+                                    <p class="border p-2">
+                                        @foreach (var item in Model)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.m_account)
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>@Html.DisplayNameFor(model => model.m_name)</label>
+                                    <p class="border p-2">
+                                        @foreach (var item in Model)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.m_name)
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>@Html.DisplayNameFor(model => model.phone)</label>
+                                    <p class="border p-2">
+                                        @foreach (var item in Model)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.phone)
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>@Html.DisplayNameFor(model => model.birthday)</label>
+                                    <p class="border p-2">
+                                        @foreach (var item in Model)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.birthday)
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>@Html.DisplayNameFor(model => model.address)</label>
+                                    <p class="border p-2">
+                                        @foreach (var item in Model)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.address)
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>@Html.DisplayNameFor(model => model.id)</label>
+                                    <p class="border p-2">
+                                        @foreach (var item in Model)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.id)
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    @*<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>*@
+                                    @foreach (var item in Model)
+                                    {
+
+                                        @Html.ActionLink("修改資料", "UserEdit", "User", new { i = item.rowid }, new { @class = "btn btn-primary" })
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @*<div>
+            <h3>帳號圖像上傳</h3>
+            <hr />
+            <div class="col-6">
+                @using (Html.BeginForm("Upload", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="file" name="file" id="file" class="form-control" />
+                    <input type="submit" value="上傳檔案" class="btn btn-primary form-control" />
+                }
+                @Html.ActionLink("返回", "UploadCancel", "User", new { @class = "btn btn-success form-button" })
+            </div>
+        </div>*@
+
+    <div class="file-upload">
+        @using (Html.BeginForm("Upload", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="image-upload-wrap">
+                @*<input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />*@
+                <input type="file" name="file" id="file" class="form-control file-upload-input" onchange="readURL(this);" accept="image/*" />
+                <div class="drag-text">
+                    <h3>拖放或選擇圖片</h3>
+                </div>
+            </div>
+            <div class="file-upload-content">
+                <img class="file-upload-image" src="#" alt="your image" />
+                <div class="image-title-wrap">
+                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                </div>
+            </div>
+
+            <div class="row pt-3">
+                <input type="submit" value="上傳檔案" class="file-upload-btn col-md-5" />
+                <div class="col-md-2"></div>
+                @Html.ActionLink("取消", "UploadCancel", "User", new { @class = "file-upload-btn-cancel form-button col-md-5 d-flex justify-content-center", @style = "text-decoration: none;" })
+            </div>
+        }
+
+    </div>
+}

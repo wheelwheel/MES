@@ -1,0 +1,594 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MESModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="machine">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="m_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="m_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="material">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="m_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="m_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="factory_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="shape_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="shape_length" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="shape_diameter" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="length" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="client_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="order_date" Type="date" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="order_detail">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="product_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="workoder_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="process">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="proc_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="proc_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="role" Type="nvarchar" MaxLength="50" />
+          <Property Name="Diameter" Type="nvarchar" MaxLength="50" />
+          <Property Name="Length" Type="nvarchar" MaxLength="50" />
+          <Property Name="Diameter_Tolerance" Type="nvarchar" MaxLength="50" />
+          <Property Name="Straightness" Type="nvarchar" MaxLength="50" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="re_complete">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="re_complete_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="re_complete_date" Type="date" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="re_complete_detail">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="re_complete_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="proc_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="mach_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="value1" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="value2" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="value3" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="user_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="start_time" Type="datetime" Nullable="false" />
+          <Property Name="end_time" Type="datetime" Nullable="false" />
+          <Property Name="qty" Type="int" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="route">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="r_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="r_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="route_detail">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="r_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="sort_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="proc_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="min_value" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="max_value" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="m_account" Type="nvarchar" MaxLength="50" />
+          <Property Name="m_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="role_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="pass_user" Type="nvarchar" MaxLength="50" />
+          <Property Name="email_user" Type="nvarchar" MaxLength="50" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="id" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="workorder">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="workorder_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="workorder_date" Type="date" />
+          <Property Name="oder_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="product_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="route_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="qty" Type="int" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="workorder_detail">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="workorder_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="sort_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="process_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="machine_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="in_qty" Type="int" Nullable="false" />
+          <Property Name="bad_qty" Type="int" Nullable="false" />
+          <Property Name="adj_qty" Type="int" Nullable="false" />
+          <Property Name="out_qty" Type="int" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityContainer Name="MESModelStoreContainer">
+          <EntitySet Name="machine" EntityType="Self.machine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="material" EntityType="Self.material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_detail" EntityType="Self.order_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="process" EntityType="Self.process" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="re_complete" EntityType="Self.re_complete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="re_complete_detail" EntityType="Self.re_complete_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="route" EntityType="Self.route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="route_detail" EntityType="Self.route_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="workorder" EntityType="Self.workorder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="workorder_detail" EntityType="Self.workorder_detail" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MESEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="machine" EntityType="MESModel.machine" />
+          <EntitySet Name="material" EntityType="MESModel.material" />
+          <EntitySet Name="order" EntityType="MESModel.order" />
+          <EntitySet Name="order_detail" EntityType="MESModel.order_detail" />
+          <EntitySet Name="process" EntityType="MESModel.process" />
+          <EntitySet Name="product" EntityType="MESModel.product" />
+          <EntitySet Name="re_complete" EntityType="MESModel.re_complete" />
+          <EntitySet Name="sysdiagrams" EntityType="MESModel.sysdiagrams" />
+          <EntitySet Name="users" EntityType="MESModel.users" />
+          <EntitySet Name="workorder" EntityType="MESModel.workorder" />
+          <EntitySet Name="workorder_detail" EntityType="MESModel.workorder_detail" />
+          <EntitySet Name="route" EntityType="MESModel.route" />
+          <EntitySet Name="route_detail" EntityType="MESModel.route_detail" />
+          <EntitySet Name="re_complete_detail" EntityType="MESModel.re_complete_detail" />
+        </EntityContainer>
+        <EntityType Name="machine">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="m_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="m_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="material">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="m_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="m_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="factory_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="shape_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="shape_length" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="shape_diameter" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="length" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="client_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_date" Type="DateTime" Precision="0" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="order_detail">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="product_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="workoder_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="process">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="proc_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="proc_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Diameter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Diameter_Tolerance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Straightness" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="re_complete">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="re_complete_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="re_complete_date" Type="DateTime" Precision="0" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="m_account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="m_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pass_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="workorder">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="workorder_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="workorder_date" Type="DateTime" Precision="0" />
+          <Property Name="oder_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="product_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="route_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="qty" Type="Int32" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="workorder_detail">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="workorder_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sort_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="process_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="machine_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="in_qty" Type="Int32" Nullable="false" />
+          <Property Name="bad_qty" Type="Int32" Nullable="false" />
+          <Property Name="adj_qty" Type="Int32" Nullable="false" />
+          <Property Name="out_qty" Type="Int32" Nullable="false" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="route">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="r_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="r_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="route_detail">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="r_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sort_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="proc_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="min_value" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="max_value" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="re_complete_detail">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="re_complete_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="proc_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mach_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="value1" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="value2" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="value3" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="user_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="start_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="qty" Type="Int32" />
+          <Property Name="remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MESModelStoreContainer" CdmEntityContainer="MESEntities">
+          <EntitySetMapping Name="machine">
+            <EntityTypeMapping TypeName="MESModel.machine">
+              <MappingFragment StoreEntitySet="machine">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="m_Name" ColumnName="m_Name" />
+                <ScalarProperty Name="m_No" ColumnName="m_No" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="material">
+            <EntityTypeMapping TypeName="MESModel.material">
+              <MappingFragment StoreEntitySet="material">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="shape_diameter" ColumnName="shape_diameter" />
+                <ScalarProperty Name="shape_length" ColumnName="shape_length" />
+                <ScalarProperty Name="shape_no" ColumnName="shape_no" />
+                <ScalarProperty Name="factory_no" ColumnName="factory_no" />
+                <ScalarProperty Name="m_Name" ColumnName="m_Name" />
+                <ScalarProperty Name="m_No" ColumnName="m_No" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order">
+            <EntityTypeMapping TypeName="MESModel.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="client_no" ColumnName="client_no" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_detail">
+            <EntityTypeMapping TypeName="MESModel.order_detail">
+              <MappingFragment StoreEntitySet="order_detail">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="workoder_no" ColumnName="workoder_no" />
+                <ScalarProperty Name="product_no" ColumnName="product_no" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="process">
+            <EntityTypeMapping TypeName="MESModel.process">
+              <MappingFragment StoreEntitySet="process">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="proc_name" ColumnName="proc_name" />
+                <ScalarProperty Name="proc_no" ColumnName="proc_no" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product">
+            <EntityTypeMapping TypeName="MESModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="Straightness" ColumnName="Straightness" />
+                <ScalarProperty Name="Diameter_Tolerance" ColumnName="Diameter_Tolerance" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Diameter" ColumnName="Diameter" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_no" ColumnName="product_no" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="re_complete">
+            <EntityTypeMapping TypeName="MESModel.re_complete">
+              <MappingFragment StoreEntitySet="re_complete">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="re_complete_date" ColumnName="re_complete_date" />
+                <ScalarProperty Name="re_complete_no" ColumnName="re_complete_no" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MESModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="MESModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="email_user" ColumnName="email_user" />
+                <ScalarProperty Name="pass_user" ColumnName="pass_user" />
+                <ScalarProperty Name="role_no" ColumnName="role_no" />
+                <ScalarProperty Name="m_name" ColumnName="m_name" />
+                <ScalarProperty Name="m_account" ColumnName="m_account" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workorder">
+            <EntityTypeMapping TypeName="MESModel.workorder">
+              <MappingFragment StoreEntitySet="workorder">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="route_no" ColumnName="route_no" />
+                <ScalarProperty Name="product_no" ColumnName="product_no" />
+                <ScalarProperty Name="oder_no" ColumnName="oder_no" />
+                <ScalarProperty Name="workorder_date" ColumnName="workorder_date" />
+                <ScalarProperty Name="workorder_no" ColumnName="workorder_no" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workorder_detail">
+            <EntityTypeMapping TypeName="MESModel.workorder_detail">
+              <MappingFragment StoreEntitySet="workorder_detail">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="out_qty" ColumnName="out_qty" />
+                <ScalarProperty Name="adj_qty" ColumnName="adj_qty" />
+                <ScalarProperty Name="bad_qty" ColumnName="bad_qty" />
+                <ScalarProperty Name="in_qty" ColumnName="in_qty" />
+                <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+                <ScalarProperty Name="process_no" ColumnName="process_no" />
+                <ScalarProperty Name="sort_no" ColumnName="sort_no" />
+                <ScalarProperty Name="workorder_no" ColumnName="workorder_no" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="route">
+            <EntityTypeMapping TypeName="MESModel.route">
+              <MappingFragment StoreEntitySet="route">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="r_name" ColumnName="r_name" />
+                <ScalarProperty Name="r_no" ColumnName="r_no" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="route_detail">
+            <EntityTypeMapping TypeName="MESModel.route_detail">
+              <MappingFragment StoreEntitySet="route_detail">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="max_value" ColumnName="max_value" />
+                <ScalarProperty Name="min_value" ColumnName="min_value" />
+                <ScalarProperty Name="proc_no" ColumnName="proc_no" />
+                <ScalarProperty Name="sort_no" ColumnName="sort_no" />
+                <ScalarProperty Name="r_no" ColumnName="r_no" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="re_complete_detail">
+            <EntityTypeMapping TypeName="MESModel.re_complete_detail">
+              <MappingFragment StoreEntitySet="re_complete_detail">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="user_no" ColumnName="user_no" />
+                <ScalarProperty Name="value3" ColumnName="value3" />
+                <ScalarProperty Name="value2" ColumnName="value2" />
+                <ScalarProperty Name="value1" ColumnName="value1" />
+                <ScalarProperty Name="mach_no" ColumnName="mach_no" />
+                <ScalarProperty Name="proc_no" ColumnName="proc_no" />
+                <ScalarProperty Name="re_complete_no" ColumnName="re_complete_no" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,120 @@
+
+@media screen and (max-width: 780px) {
+    table {
+        display: block;
+        padding: 5px;
+    }
+
+        table > *, table tr, table td, table th {
+            display: block;
+        }
+
+        table thead {
+            display: none;
+        }
+
+        table tbody tr {
+            height: auto;
+            padding: 8px 0;
+        }
+
+            table tbody tr td {
+                padding-left: 45%;
+                margin-bottom: 12px;
+            }
+
+                table tbody tr td:last-child {
+                    margin-bottom: 0;
+                }
+
+                table tbody tr td:before {
+                    position: absolute;
+                    font-weight: 700;
+                    width: 40%;
+                    left: 10px;
+                    top: 0;
+                }
+
+    .specification table tbody {
+        margin-bottom: 20px;
+    }
+
+
+    .master table tbody tr td:nth-child(1):before {
+        content: "訂單編號";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .master table tbody tr td:nth-child(2):before {
+        content: "產品編號";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .master table tbody tr td:nth-child(3):before {
+        content: "產品名稱";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .specification table tbody tr td:nth-child(1):before {
+        content: "完工單編號";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .specification table tbody tr td:nth-child(2):before {
+        content: "製程編號";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .specification table tbody tr td:nth-child(3):before {
+        content: "製程名稱";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .specification table tbody tr td:nth-child(4):before {
+        content: "機台名稱";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .specification table tbody tr td:nth-child(5):before {
+        content: "操作員編號";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .specification table tbody tr td:nth-child(6):before {
+        content: "開始時間";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .specification table tbody tr td:nth-child(7):before {
+        content: "結束時間";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .specification table tbody tr td:nth-child(8):before {
+        content: "數量";
+        background: #ffed86;
+        border-radius: 6px 0 0 6px;
+    }
+}
+
+@media (max-width:765px), print {
+    #window {
+        display: none;
+    }
+}
+
+@media (min-width:765px), print {
+    #phone {
+        display: none;
+    }
+}

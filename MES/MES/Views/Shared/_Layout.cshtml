@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - @AppService.AppName</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href="@Url.Content("~/Content/Chart.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/Chart.min.js")"></script>
+
+    @RenderSection("scripts", required: false)
+    @RenderSection("styles", required: false)
+</head>
+<body class="p-0 h-100" >
+    <nav class=" navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        @Html.Partial("~/Views/Shared/_PartialBannerHeader.cshtml")
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bar"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bar">
+            <ul class="nav navbar-nav ml-auto">
+                @if (UserAccount.IsLogin == true)
+                {
+
+                    if (UserAccount.Role == EnumList.LoginRole.Admin)
+                    {
+                        @Html.Partial("~/Views/Shared/_PartialMenuAdmin.cshtml")
+                    }
+                    else
+                    {
+                        @Html.Partial("~/Views/Shared/_PartialMenuUser.cshtml")
+                    }
+                    @Html.Partial("~/Views/Shared/_PartialMenuCommon.cshtml")
+                }
+                else
+                {
+                    @Html.Partial("~/Views/Shared/_PartialMenuGuest.cshtml")
+                }
+            </ul>
+        </div>
+    </nav>
+    <div>
+        @RenderBody()
+        @Html.Partial("~/Views/Shared/_PartialFooter.cshtml")
+    </div>
+    <style>
+        .toTop-arrow {
+            border-radius: 25%;
+            opacity: 0.6;
+            background-color: darkslateblue;
+            position: fixed;
+            border: none;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 9999;
+            color: cornflowerblue;
+        }
+        .dropdown-menu a, .dropdown-item, .nav a {
+            /*display: block;*/ /* 讓 <a> 填滿 <li> */
+            text-decoration: none; /* 移除超連結底線 */
+        }
+        .dropdown-menu{
+            min-width:0 !important;
+        }
+    </style>
+    <button type="button" id="BackTop" class="toTop-arrow"><i class="fa fa-chevron-up fa-2x"></i></button>
+    <script>
+        $(function () {
+            $('#BackTop').click(function () {
+                $('html,body').animate({ scrollTop: 0 }, 333);
+            });
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 300) {
+                    $('#BackTop').fadeIn(222);
+                } else {
+                    $('#BackTop').stop().fadeOut(222);
+                }
+            }).scroll();
+        });
+
+        $('.nav .smooth-scroll').click(function () {
+            if ($(window).width() <= 1024) {
+                $('.navbar-toggler').trigger('click');
+            }
+        });
+
+
+        jQuery(document).ready(function (e) {
+            var offset = jQuery(':target').offset();
+            var scrollto = offset.top - 260; // minus fixed header height
+            jQuery('html, body').animate({ scrollTop: scrollto }, 0);
+        });
+
+    </script>
+</body>
+</html>

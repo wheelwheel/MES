@@ -1,0 +1,74 @@
+﻿@model MES.Models.ViewModel.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLite.cshtml";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/css/login.css")">
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/vendor/animate/animate.css")">
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/vendor/css-hamburgers/hamburgers.min.css")">
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/vendor/select2/select2.min.css")">
+
+<div class="limiter ">
+    <div class="container-login100">
+        <div class="wrap-login100 ">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="~/Images/traceability-02.png" alt="IMG">
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title">
+                        @AppService.AppName - 系統登入
+                    </span>
+
+                    @Html.ValidationMessageFor(model => model.Account, "", new { @class = "wrap-input100 validate-input text-danger" })
+                    <div class="wrap-input100 validate-input">
+                        @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "input100", placeholder = "帳號" } })
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        </span>
+
+                    </div>
+
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "wrap-input100 validate-input text-danger" })
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input100", placeholder = "密碼" } })
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <input type="submit" value="登入" class="login100-form-btn" />
+                        @Html.ActionLink("返回首頁", "Index", "Home", null, new { @class = "btn login100-form-btn" })
+                    </div>
+
+
+                </form>
+            }
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/vendor/select2/select2.min.js")"></script>
+
+<script src="@Url.Content("~/vendor/tilt/tilt.jquery.min.js")"></script>
+<script>
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+
+<script src="@Url.Content("~/js/main.js")"></script>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "MessageText";
+}
+
+@*<div class="container">
+        <div class="row margin-top-login">
+            <div class="col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+                <div class="card  box-shadow">
+                    <div class="card-header">
+                        <span class="text-primary">@ViewBag.HeaderText</span>
+                    </div>
+                    <div class="card-block">
+                        <h4>
+                            @ViewBag.MessageText
+                        </h4>
+                        <hr />
+                        @Html.ActionLink("返回首頁", "Index", "Home", null, new { @class = "btn btn-primary" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+<div classs="container p-5">
+    <div class="row no-gutters margin-top-login">
+        <div class="col-lg-6 col-md-12 m-auto">
+            <div class="alert alert-success fade show" role="alert">
+                <h4 class="alert-heading">@ViewBag.HeaderText</h4>
+                <p>  @ViewBag.MessageText</p>
+                <meta http-equiv="refresh" content="4; url='/User/Infor'">
+            </div>
+        </div>
+    </div>
+</div>

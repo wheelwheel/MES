@@ -1,0 +1,77 @@
+﻿@model MES.Models.workorder
+
+@{
+    ViewBag.Title = "製令主檔新增";
+}
+
+@*@section styles {
+        <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+    }*@
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/datepicker.js")"></script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container-fluid mt-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-5 col-md-6 col-sm-10 ">
+                <div class="panel panel-group border border-secondary">
+                    <div class="panel panel-primary">
+                        <div class="panel panel-heading  bg-info">
+                            <h4>製令主檔新增</h4>
+                        </div>
+                        <div class="panel panel-body mt-2 mb-2">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.workorder_no, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.workorder_no, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.workorder_no, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.workorder_date, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.workorder_date, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                    @Html.ValidationMessageFor(model => model.workorder_date, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.product_no, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.DropDownListFor(model => model.product_no, new SelectList(ViewBag.ProductList, "Value", "Text"), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.product_no, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.route_no, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.DropDownListFor(model => model.route_no, new SelectList(ViewBag.RouteList, "Value", "Text"), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.route_no, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.qty, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.qty, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.qty, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row row-group">
+                                <div class="col-md-12">
+                                    <input type="submit" value="新增" class="btn btn-primary" />
+                                    @Html.ActionLink("返回列表", "List", "WorkOrder", new { page = AppSession.MasterPage }, new { @class = "btn btn-success" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

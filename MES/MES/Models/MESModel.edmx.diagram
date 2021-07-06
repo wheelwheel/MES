@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a5a00dc672e44faf81bd9c75c3632352" Name="Diagram1">
+        <EntityTypeShape EntityType="MESModel.machine" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="MESModel.material" Width="1.5" PointX="2.5" PointY="0.75" />
+        <EntityTypeShape EntityType="MESModel.order" Width="1.5" PointX="0.875" PointY="4.875" />
+        <EntityTypeShape EntityType="MESModel.order_detail" Width="1.5" PointX="2.5" PointY="4.875" />
+        <EntityTypeShape EntityType="MESModel.process" Width="1.5" PointX="5.125" PointY="3.125" />
+        <EntityTypeShape EntityType="MESModel.product" Width="1.5" PointX="7" PointY="0.875" />
+        <EntityTypeShape EntityType="MESModel.re_complete" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="MESModel.route" Width="1.5" PointX="9.25" PointY="4.625" />
+        <EntityTypeShape EntityType="MESModel.sysdiagrams" Width="1.5" PointX="11.375" PointY="1" />
+        <EntityTypeShape EntityType="MESModel.users" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MESModel.workorder" Width="1.5" PointX="1" PointY="7.5" />
+        <EntityTypeShape EntityType="MESModel.workorder_detail" Width="1.5" PointX="2.75" PointY="7.5" />
+        <EntityTypeShape EntityType="MESModel.route_detail" Width="1.5" PointX="11" PointY="4.5" />
+        <EntityTypeShape EntityType="MESModel.re_complete_detail" Width="1.5" PointX="6.875" PointY="5.125" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

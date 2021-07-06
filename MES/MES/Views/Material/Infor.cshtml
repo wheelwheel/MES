@@ -1,0 +1,110 @@
+﻿@model IEnumerable<MES.Models.material>
+
+@{
+    ViewBag.Title = "物料資訊";
+}
+
+<h2 style="text-align:center;margin-top:10px;" class="pt-2">物料資訊</h2>
+
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/css/Infor/infor.css")">
+
+
+
+
+<div class="pt-2">
+    <div class="master">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.m_No)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.m_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.factory_no)
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.m_No)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.m_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.factory_no)
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+    <div class="specification">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.shape_no)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.shape_length)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.shape_diameter)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.length)
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.shape_no)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.shape_length)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.shape_diameter)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.length)
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+    <div class="data">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.remark)
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.remark)
+                        </td>
+                    </tr>
+
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
+

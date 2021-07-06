@@ -1,0 +1,89 @@
+﻿@model MES.Models.process
+
+@{
+    ViewBag.Title = "編輯";
+}
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.rowid)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.proc_no, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.proc_no, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.proc_no, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.proc_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.proc_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.proc_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.remark, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.remark, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.remark, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="儲存" class="btn btn-primary" />
+                    <a type="button" class="btn btn-primary" href="~/Process/List">取消</a>
+                </div>
+            </div>
+        </div>
+    }*@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container-fluid mt-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-5 col-md-6 col-sm-10 ">
+                <div class="panel panel-group border border-secondary">
+                    <div class="panel panel-primary">
+                        <div class="panel panel-heading  bg-info">
+                            <h4>製程修改</h4>
+                        </div>
+                        <div class="panel panel-body mt-2 mb-2">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.rowid)
+
+                            <div class="row row-group  m-2">
+                                @Html.LabelFor(model => model.proc_no, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.proc_no, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.proc_no, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group  m-2">
+                                @Html.LabelFor(model => model.proc_name, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.proc_name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.proc_name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row row-group  m-2">
+                                <div class="col-md-12">
+                                    <input type="submit" value="儲存" class="btn btn-primary" />
+                                    @Html.ActionLink("返回列表", "List", "Process", new { page = AppSession.MasterPage }, new { @class = "btn btn-success" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

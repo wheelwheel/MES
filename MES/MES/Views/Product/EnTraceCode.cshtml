@@ -1,0 +1,30 @@
+﻿@model MES.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "產品查詢";
+}
+
+@*<link href="@Url.Content("~/css/searchbar.css")" rel="stylesheet" />*@
+<link href="@Url.Content("~/css/searchbar/searchbar.css")" rel="stylesheet" />
+@*<script src="@Url.Content("~/js/js/extention/choices.js")"></script>*@
+
+<div class="pt-5 h-100">
+    @Html.ValidationMessageFor(model => model.order_no, "", new { @class = "text-danger d-flex justify-content-center" })
+    <div id="cover">
+        @using (Html.BeginForm())
+        {
+            <div class="tb">
+                <div class="td">
+                    @Html.EditorFor(model => model.order_no, new { htmlAttributes = new { @class = "text-black-50", placeholder = "請輸入訂單編號" } })
+                </div>
+                <div class="td ">
+                    <button type="submit">
+                        <i class="fa fa-search fa-5x text-black-50" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

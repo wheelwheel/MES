@@ -1,0 +1,66 @@
+﻿@model MES.Models.MaterialViewModel
+
+@{
+    ViewBag.Title = "物料搜尋";
+}
+
+<link href="@Url.Content("~/css/searchbar/searchbar.css")" rel="stylesheet" />
+
+
+<div class="pt-5">
+    @Html.ValidationMessageFor(model => model.mNo, "", new { @class = "text-danger d-flex justify-content-center" })
+    <div id="cover">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="tb">
+                <div class="td">
+                    @Html.EditorFor(model => model.mNo, new { htmlAttributes = new { @class="text-black-50",placeholder = "請輸入物料編號" } })
+                </div>
+                <div class="td ">
+                    <button type="submit">
+                        <i class="fa fa-search fa-5x text-black-50" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+@*@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row margin-top-login">
+            <div class="col-xs-10 offset-xs-1 col-sm-6 offset-sm-3 col-md-5 offset-md-4 col-lg-4 offset-lg-4">
+                <div class="card  box-shadow">
+                    <div class="card-header">
+                        <span class="text-primary">物料搜尋</span>
+                        <span class="text-muted float-xs-right today" title="Today"></span>
+                    </div>
+                    <div class="card-block">
+                        <div class="">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.mNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.mNo, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.mNo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <input type="submit" value="搜尋" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}*@

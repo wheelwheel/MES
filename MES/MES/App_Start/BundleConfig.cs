@@ -1,0 +1,44 @@
+﻿using System.Web;
+using System.Web.Optimization;
+
+namespace MES
+{
+    public class BundleConfig
+    {
+        // 如需統合的詳細資訊，請瀏覽 https://go.microsoft.com/fwlink/?LinkId=301862
+        public static void RegisterBundles(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                      "~/Scripts/jquery-3.6.0.min.js",
+                       "~/Scripts/jquery-ui-1.12.1.min.js",
+                       "~/Scripts/fontawesome/all.min.js",
+                       "~/Scripts/bootstrap-datetimepicker.js",
+                       "~/Scripts/bootstrap-datetimepicker.zh-TW.js",
+                       "~/Scripts/datepicker-zh-TW.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.validate*"));
+
+            // 使用開發版本的 Modernizr 進行開發並學習。然後，當您
+            // 準備好可進行生產時，請使用 https://modernizr.com 的建置工具，只挑選您需要的測試。
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+                        "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                "~/Scripts/DataTables/jquery.dataTables.min.js",
+                "~/Scripts/moment.min.js",
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/notify.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                     "~/Content/themes/base/jquery-ui.min.css",
+                     "~/Content/themes/base/datepicker.css",
+                      "~/Content/bootstrap.css",
+                      "~/Content/font-awesome.min.css",
+                      "~/Content/DataTables/css/jquery.dataTables.min.css",
+                      "~/Content/site.css",
+                      "~/Content/bootstrap-datetimepicker.min.css",
+                      "~/Content/SiteMenu.css"));
+        }
+    }
+}

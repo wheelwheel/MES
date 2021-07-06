@@ -1,0 +1,14 @@
+﻿<li class="nav-item dropdown m-2">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label"><i class="fa fa-user-o fa-fw"></i>我的帳號</span> <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+        <li  class="dropdown-item">
+            @Html.ActionLink("個人資料", "Infor", "User", null, new { @class = "fa fa-list-alt" })
+        </li>
+        <li class="dropdown-item ">
+            @Html.ActionLink("重設密碼", "ResetPassword", "User", null, new { @class = "fa fa-unlock-alt" })
+        </li>
+        <li class="dropdown-item ">
+            @Html.ActionLink("登出", "Login", "User", null, new { @class = "fa fa-sign-out" })
+        </li>
+    </ul>
+</li>

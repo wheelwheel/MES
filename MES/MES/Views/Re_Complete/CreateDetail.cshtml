@@ -1,0 +1,122 @@
+﻿@model MES.Models.re_complete_detail
+
+@{
+    ViewBag.Title = "回報單明細新增";
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/datepicker.js")"></script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container-fluid mt-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-5 col-md-6 col-sm-10 ">
+                <div class="panel panel-group border border-secondary">
+                    <div class="panel panel-primary">
+                        <div class="panel panel-heading  bg-info">
+                            <h4>回報單明細新增</h4>
+                        </div>
+                        <div class="panel panel-body mt-2 mb-2">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(m => m.rowid)
+                            @Html.HiddenFor(m => m.re_complete_no)
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.proc_no, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @*@Html.EditorFor(model => model.proc_no, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.DropDownListFor(model => model.proc_no, new SelectList(ViewBag.ProcessList, "Value", "Text"), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.proc_no, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.mach_no, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @*@Html.EditorFor(model => model.mach_no, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.DropDownListFor(model => model.mach_no, new SelectList(ViewBag.MachineList, "Value", "Text"), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.mach_no, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.value1, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.value1, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.value1, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.value2, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.value2, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.value2, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.value3, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.value3, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.value3, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.user_no, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.DropDownListFor(model => model.user_no, new SelectList(ViewBag.UserList, "Value", "Text"), new { @class = "form-control" })
+                                    @*@Html.EditorFor(model => model.user_no, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.ValidationMessageFor(model => model.user_no, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.start_time, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.start_time, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                    @Html.ValidationMessageFor(model => model.start_time, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.end_time, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.end_time, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                    @Html.ValidationMessageFor(model => model.end_time, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.qty, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.qty, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.qty, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                @Html.LabelFor(model => model.remark, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.remark, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.remark, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row row-group">
+                                <div class="col-md-12">
+                                    <input type="submit" value="新增" class="btn btn-primary" />
+                                    @Html.ActionLink("返回列表", "List", "Re_Complete", new { page = AppSession.MasterPage }, new { @class = "btn btn-success" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

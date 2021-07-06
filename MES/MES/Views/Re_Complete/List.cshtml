@@ -1,0 +1,155 @@
+﻿@model MES.Models.re_completeViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "回報單資料維護";
+}
+
+
+@section styles {
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+}
+
+<div class="container-fluid mt-3">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-10 col-xs-12">
+            <div class="panel panel-group border border-secondary">
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading  bg-info">
+                        <h4>回報單資料維護</h4>
+                    </div>
+                    <div class="panel-body">
+                        @foreach (var item in Model.re_completesList)
+                        {
+                            <div class="bg-secondary pt-1">
+                                @Html.PagedListPager((IPagedList)Model.re_completesList, x => Url.Action("MasterPage", new { page = x }))
+                            </div>
+                            <div class="">
+                                @Html.ActionLink("新增", "CreateMaster", "Re_Complete", null, new { @class = "btn btn-success m-1" })
+                                @Html.ActionLink("修改", "EditMaster", "Re_Complete", new { id = item.rowid }, new { @class = "btn btn-primary m-1" })
+                            </div>
+                            <table class="table row ml-2">
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_completesList.First().re_complete_no):
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.re_complete_no)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_completesList.First().re_complete_date):
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.re_complete_date)
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-group border border-secondary">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <div>
+                            @Html.ActionLink("新增", "CreateDetail", "Re_Complete", null, new { @class = "btn btn-success m-1" })
+                        </div>
+                        @foreach (var item in Model.re_complete_detailsList)
+                        {
+                            <table class="table">
+                                <tr class="">
+                                    
+                                    @Html.ActionLink("修改", "EditDetail", "Re_Complete", new { id = item.rowid }, new { @class = "btn btn-primary m-1" })
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_complete_detailsList.First().proc_no)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.proc_no)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_complete_detailsList.First().mach_no)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.mach_no)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_complete_detailsList.First().value1)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.value1)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_complete_detailsList.First().value2)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.value2)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_complete_detailsList.First().value3)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.value3)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_complete_detailsList.First().user_no)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.user_no)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_complete_detailsList.First().start_time)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.start_time)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_complete_detailsList.First().end_time)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.end_time)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_complete_detailsList.First().qty)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.qty)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.re_complete_detailsList.First().remark)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.remark)
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

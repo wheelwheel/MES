@@ -1,0 +1,156 @@
+﻿@model MES.Models.WorkOrderViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "製令";
+}
+
+
+@section styles {
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+}
+
+<div class="container-fluid mt-3">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-6 col-md-9 col-sm-10 col-xs-12">
+            <div class="panel panel-group border border-secondary">
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading  bg-info">
+                        <h4>製令資料維護</h4>
+                    </div>
+                    <div class="panel-body">
+                        @foreach (var item in Model.workordersList)
+                        {
+                            <div class="bg-secondary pt-1">
+                                @Html.PagedListPager((IPagedList)Model.workordersList, x => Url.Action("MasterPage", new { page = x }))
+                            </div>
+                            <div class="">
+                                @Html.ActionLink("新增", "CreateMaster", "WorkOrder", null, new { @class = "btn btn-success m-1" })
+                                @Html.ActionLink("修改", "EditMaster", "WorkOrder", new { id = item.rowid }, new { @class = "btn btn-primary m-1" })
+                                @Html.ActionLink("刪除", "DeleteMaster", "WorkOrder", new { id = item.rowid }, new { @class = "btn btn-danger m-1", onclick = "return confirm('是否確定要刪除?');" })
+                            </div>
+                            <table class="table row ml-2">
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.workordersList.First().workorder_no):
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.workorder_no)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.workordersList.First().workorder_date):
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.workorder_date)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.workordersList.First().product_no):
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.product_no)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.workordersList.First().route_no):
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.route_no)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        @Html.DisplayNameFor(m => m.workordersList.First().qty):
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.qty)
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-group border border-secondary">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <div>
+                            @Html.ActionLink("新增", "CreateDetail", "WorkOrder", null, new { @class = "btn btn-success m-1" })
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <td class="">
+                                    
+                                </td>
+                                <td class="">
+                                    @Html.DisplayNameFor(m => m.workorder_detailsList.First().sort_no)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayNameFor(m => m.workorder_detailsList.First().process_no)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayNameFor(m => m.workorder_detailsList.First().machine_no)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayNameFor(m => m.workorder_detailsList.First().in_qty)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayNameFor(m => m.workorder_detailsList.First().bad_qty)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayNameFor(m => m.workorder_detailsList.First().adj_qty)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayNameFor(m => m.workorder_detailsList.First().out_qty)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayNameFor(m => m.workorder_detailsList.First().remark)
+                                </td>
+                            </tr>
+                            @foreach (var item in Model.workorder_detailsList)
+                            {
+                                <tr>
+                                    <td class="">
+                                        @Html.ActionLink("修改", "EditDetail", "WorkOrder", new { id = item.rowid }, new { @class = "btn btn-primary m-1" })
+                                        @Html.ActionLink("刪除", "DeleteDetail", "WorkOrder", new { id = item.rowid }, new { @class = "btn btn-danger m-1", onclick = "return confirm('是否確定要刪除?');" })
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.sort_no)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.process_no)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.machine_no)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.in_qty)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.bad_qty)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.adj_qty)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.out_qty)
+                                    </td>
+                                    <td class="">
+                                        @Html.DisplayFor(modelItem => item.remark)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
