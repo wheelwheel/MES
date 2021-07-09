@@ -31,11 +31,6 @@ namespace MES.Controllers
                 .OrderBy(m => m.workoder_no)
                 .ToPagedList(AppSession.DetailPage, AppSession.DetailPageSize);
 
-            //foreach (var item in model.order_detailsList)
-            //{
-            //    item.proc_name = GetProcessName(item.proc_no);
-            //}
-
             return View(model);
         }
 

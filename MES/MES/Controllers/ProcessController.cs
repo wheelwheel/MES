@@ -48,12 +48,6 @@ namespace MES.Controllers
         public ActionResult Create(process model)
         {
             if (!ModelState.IsValid) return View(model);
-
-            //process data = new process()
-            //{
-            //    proc_no = model.proc_no,
-            //    proc_name = model.proc_name
-            //};
             bool bln_error = false;
             var check1 = db.process.Where(m => m.proc_no == model.proc_no).FirstOrDefault();
             if (check1 != null) { ModelState.AddModelError("proc_no", "編號重複"); bln_error = true; }
