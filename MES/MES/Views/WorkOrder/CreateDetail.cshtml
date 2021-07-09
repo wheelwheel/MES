@@ -4,10 +4,6 @@
     ViewBag.Title = "製令明細新增";
 }
 
-@*@section styles {
-    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
-}*@
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -71,21 +67,6 @@
                                     @Html.ValidationMessageFor(model => model.adj_qty, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            @*<div class="row row-group">
-                                @Html.LabelFor(model => model.out_qty, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
-                                <div class="col-md-9">
-                                    @Html.EditorFor(model => model.out_qty, new { htmlAttributes = new { @class = "form-control" ,@readonly= "readonly"} })
-                                    @Html.ValidationMessageFor(model => model.out_qty, "", new { @class = "text-danger" })
-                                </div>
-                            </div>*@
-
-                            @*<div class="row row-group">
-                                @Html.LabelFor(model => model.remark, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
-                                <div class="col-md-9">
-                                    @Html.EditorFor(model => model.remark, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.remark, "", new { @class = "text-danger" })
-                                </div>
-                            </div>*@
 
                             <div class="row row-group">
                                 <div class="col-md-12">

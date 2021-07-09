@@ -4,13 +4,10 @@
     ViewBag.Title = "產品資訊";
 }
 
-
 <h2 style="text-align:center;margin-top:10px;" class="pt-2">產品資訊</h2>
-
 
 <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/Infor/infor.css")">
 <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/Infor/infor_product.css")">
-
 
 <div class="pt-2">
     <div class="master">
@@ -127,7 +124,6 @@
                     <th>
                         @Html.DisplayNameFor(model => model.qty)
                     </th>
-                    @*<th></th>*@
                 </tr>
             </thead>
             @foreach (var item in Model)

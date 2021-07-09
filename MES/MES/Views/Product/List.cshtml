@@ -4,7 +4,6 @@
     ViewBag.Title = "產品";
 }
 
-
 <div class="row justify-content-center m-3">
     <div class="col-md-12">
         <div class="container-fluid">
@@ -21,15 +20,9 @@
                             <th >
                                 訂單編號
                             </th>
-                            @*<th >
-                                產品編號
-                            </th>*@
                             <th >
                                 產品名稱
                             </th>
-                            @*<th >
-                                製程編號
-                            </th>*@
                             <th >
                                 製程名稱
                             </th>
@@ -74,9 +67,7 @@
 
                     { "data": "re_complete_no", "width": "40px" },
                     { "data": "order_no", "width": "40px" },
-/*                    { "data": "product_no", "width": "50px" },*/
                     { "data": "product_name", "width": "50px" },
-/*                    { "data": "proc_no", "width": "50px" },*/
                     { "data": "proc_name", "width": "50px" },
 
                     { "data": "mach_name", "width": "50px" },
@@ -90,8 +81,7 @@
                         "render": function (data) { return moment(data).format("YYYY/MM/DD"); }
                     },
                     { "data": "qty", "width": "20px" }
-             ],
-
+                ],
          });
     });
 </script>
