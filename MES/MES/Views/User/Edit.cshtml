@@ -8,10 +8,7 @@
     <script src="@Url.Content("~/Scripts/datepicker.js")"></script>
 }
 
-
 <link rel="stylesheet" href="@Url.Content("~/css/user/main.css")">
-
-
 
 
 @using (Html.BeginForm())
@@ -27,7 +24,6 @@
                         <div class="account-settings">
                             <div class="user-profile">
                                 <div class="user-avatar">
-                                    @*<img src="@Url.Content(@UserAccount.UserImageUrl)">*@
                                     <img src="@Url.Content(string.Format("~/Images/User/{0}.jpg", Html.DisplayFor(model => model.m_account)))" alt="">
                                 </div>
                             </div>

@@ -11,7 +11,6 @@
 }
 
 <h2 class="text-center mt-2">  @ViewBag.MachineName 機台資訊</h2>
-@*<h2 class="text-center m-1">  @ViewBag.Date</h2>*@
 
 
 @using (Html.BeginForm("Search", "Chart"))
@@ -26,9 +25,6 @@
         </div>
     </div>
 }
-
-
-
 
 
 <div class="row" style="display:flex;flex-wrap: wrap;">
@@ -82,7 +78,6 @@
             maintainAspectRatio: false,
             title: {
                 display: true,
-                //text: '機台資訊'
             },
             legend: {
                 position: 'top',
@@ -97,7 +92,6 @@
                         precision:100,
                         max: 1200,
                         min: 0,
-                        //beginAtZero: true,
                         autoSkip: true
                     }
                 }]

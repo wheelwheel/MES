@@ -27,7 +27,6 @@
                             <div class="row row-group">
                                 @Html.LabelFor(model => model.proc_no, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
                                 <div class="col-md-9">
-                                    @*@Html.EditorFor(model => model.proc_no, new { htmlAttributes = new { @class = "form-control" } })*@
                                     @Html.DropDownListFor(model => model.proc_no, new SelectList(ViewBag.ProcessList, "Value", "Text"), new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.proc_no, "", new { @class = "text-danger" })
                                 </div>
@@ -36,7 +35,6 @@
                             <div class="row row-group">
                                 @Html.LabelFor(model => model.mach_no, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
                                 <div class="col-md-9">
-                                    @*@Html.EditorFor(model => model.mach_no, new { htmlAttributes = new { @class = "form-control" } })*@
                                     @Html.DropDownListFor(model => model.mach_no, new SelectList(ViewBag.MachineList, "Value", "Text"), new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.mach_no, "", new { @class = "text-danger" })
                                 </div>
@@ -70,7 +68,6 @@
                                 @Html.LabelFor(model => model.user_no, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
                                 <div class="col-md-9">
                                     @Html.DropDownListFor(model => model.user_no, new SelectList(ViewBag.UserList, "Value", "Text"), new { @class = "form-control" })
-                                    @*@Html.EditorFor(model => model.user_no, new { htmlAttributes = new { @class = "form-control" } })*@
                                     @Html.ValidationMessageFor(model => model.user_no, "", new { @class = "text-danger" })
                                 </div>
                             </div>

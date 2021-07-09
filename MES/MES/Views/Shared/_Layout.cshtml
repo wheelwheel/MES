@@ -63,7 +63,6 @@
             color: cornflowerblue;
         }
         .dropdown-menu a, .dropdown-item, .nav a {
-            /*display: block;*/ /* 讓 <a> 填滿 <li> */
             text-decoration: none; /* 移除超連結底線 */
         }
         .dropdown-menu{
@@ -91,10 +90,9 @@
             }
         });
 
-
         jQuery(document).ready(function (e) {
             var offset = jQuery(':target').offset();
-            var scrollto = offset.top - 260; // minus fixed header height
+            var scrollto = offset.top - 260;
             jQuery('html, body').animate({ scrollTop: scrollto }, 0);
         });
 

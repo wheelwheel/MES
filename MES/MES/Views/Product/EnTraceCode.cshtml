@@ -4,9 +4,8 @@
     ViewBag.Title = "產品查詢";
 }
 
-@*<link href="@Url.Content("~/css/searchbar.css")" rel="stylesheet" />*@
 <link href="@Url.Content("~/css/searchbar/searchbar.css")" rel="stylesheet" />
-@*<script src="@Url.Content("~/js/js/extention/choices.js")"></script>*@
+
 
 <div class="pt-5 h-100">
     @Html.ValidationMessageFor(model => model.order_no, "", new { @class = "text-danger d-flex justify-content-center" })

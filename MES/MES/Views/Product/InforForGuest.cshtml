@@ -6,11 +6,8 @@
 
 <h2 style="text-align:center;margin-top:10px;" class="pt-2">產品資訊</h2>
 
-
 <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/Infor/infor.css")">
 <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/Infor/infor_product_guest.css")">
-
-
 
 <div class="pt-2">
     <div class="master">
@@ -91,9 +88,6 @@
         <table>
             <thead>
                 <tr>
-                    @*<th>
-                            @Html.DisplayNameFor(model => model.proc_no)
-                        </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.proc_name)
                     </th>
@@ -109,8 +103,6 @@
                     <th>
                         @Html.DisplayNameFor(model => model.end_time)
                     </th>
-
-
                 </tr>
             </thead>
 
@@ -118,9 +110,6 @@
             {
                 <tbody>
                     <tr>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.proc_no)
-                            </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.proc_name)
                         </td>

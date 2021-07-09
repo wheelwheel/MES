@@ -302,12 +302,9 @@
                             </div>
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-right">
-                                    @*<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>*@
                                     @foreach (var item in Model)
                                     {
-
                                         @Html.ActionLink("修改資料", "UserEdit", "User", new { i = item.rowid }, new { @class = "btn btn-primary" })
-
                                     }
                                 </div>
                             </div>
@@ -320,26 +317,11 @@
 }
 else
 {
-    @*<div>
-            <h3>帳號圖像上傳</h3>
-            <hr />
-            <div class="col-6">
-                @using (Html.BeginForm("Upload", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <input type="file" name="file" id="file" class="form-control" />
-                    <input type="submit" value="上傳檔案" class="btn btn-primary form-control" />
-                }
-                @Html.ActionLink("返回", "UploadCancel", "User", new { @class = "btn btn-success form-button" })
-            </div>
-        </div>*@
-
     <div class="file-upload">
         @using (Html.BeginForm("Upload", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             <div class="image-upload-wrap">
-                @*<input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />*@
                 <input type="file" name="file" id="file" class="form-control file-upload-input" onchange="readURL(this);" accept="image/*" />
                 <div class="drag-text">
                     <h3>拖放或選擇圖片</h3>

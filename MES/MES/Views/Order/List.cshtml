@@ -64,55 +64,36 @@
                     <div class="panel-body">
                         <table class="table">
                             <tr>
-                                <!--<td class="">-->
-                                @*@Html.ActionLink("新增", "CreateDetail", "Order", null, new { @class = "btn btn-success" })*@
-                                <!--</td>-->
                                 <td class="">
-
                                     @Html.DisplayNameFor(m => m.order_detailsList.First().product_no)
-
                                 </td>
                                 <td class="">
-
                                     @Html.DisplayNameFor(m => m.order_detailsList.First().workoder_no)
-
                                 </td>
-
                                 <td></td>
                             </tr>
 
                             @foreach (var item in Model.order_detailsList)
                             {
                                 <tr>
-                                    <!--<td class="">-->
-                                    @*@Html.ActionLink("修改", "EditDetail", "Order", new { id = item.rowid }, new { @class = "btn btn-primary" })
-                                        @Html.ActionLink("刪除", "DeleteDetail", "Order", new { id = item.rowid }, new { @class = "btn btn-danger", onclick = "return confirm('是否確定要刪除?');" })*@
-                                    <!--</td>-->
                                     <td class="">
                                         @Html.DisplayFor(modelItem => item.product_no)
                                     </td>
                                     <td class="">
                                         @Html.DisplayFor(modelItem => item.workoder_no)
                                     </td>
-
-
                                     <td>
                                         @Html.ActionLink("修改", "EditDetail", "Order", new { id = item.rowid }, new { @class = "btn btn-primary" })
 
                                         @Html.ActionLink("刪除", "DeleteDetail", "Order", new { id = item.rowid }, new { @class = "btn btn-danger", onclick = "return confirm('是否確定要刪除?');" })
-
                                     </td>
-
                                 </tr>
                                 <tr >
                                     <td class=" " style="border-bottom :none">
-
                                         @Html.DisplayNameFor(m => m.order_detailsList.First().remark)
-
                                     </td>
                                     <td class="">
                                         @Html.DisplayFor(modelItem => item.remark)
-
                                     </td>
                                     <td></td>
                                 </tr>
