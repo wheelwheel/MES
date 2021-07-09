@@ -81,13 +81,6 @@ namespace MES.Controllers
         public ActionResult CreateMaster(re_complete model)
         {
             bool bln_error = false;
-            //if (!ModelState.IsValid) return View(model);
-
-
-            //var check1 = db.re_complete.Where(m => m.re_complete_no == model.re_complete_no).FirstOrDefault();
-            //if (check1 != null) { ModelState.AddModelError("re_complete_no", "編號重複"); bln_error = true; }
-
-            //if (bln_error) return View(model);
 
             if (!ModelState.IsValid) bln_error = true;
             if (!bln_error)
@@ -161,9 +154,7 @@ namespace MES.Controllers
             {
                 var check1 = db.re_complete_detail
                     .Where(m => m.re_complete_no == model.re_complete_no)
-                    //.Where(m => m.proc_no == model.proc_no)
                     .FirstOrDefault();
-                //if (check1 != null) { ModelState.AddModelError("proc_no", "編號重複"); bln_error = true; }
             }
             if (bln_error)
             {
@@ -242,9 +233,7 @@ namespace MES.Controllers
                 var check1 = db.re_complete_detail
                     .Where(m => m.rowid != model.rowid)
                     .Where(m => m.re_complete_no == model.re_complete_no)
-                    //.Where(m => m.proc_no == model.proc_no)
                     .FirstOrDefault();
-                //if (check1 != null) { ModelState.AddModelError("proc_no", "編號重複"); bln_error = true; }
             }
             if (bln_error)
             {

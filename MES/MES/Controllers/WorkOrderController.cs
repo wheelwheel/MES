@@ -54,16 +54,6 @@ namespace MES.Controllers
         [LoginAuthorize(RoleList = "User,Admin")]
         public ActionResult CreateMaster()
         {
-            //var data = db.workorder
-            //    .Where(m => m.workorder_no == AppSession.MasterKeyValue)
-            //    .OrderByDescending(m => m.workorder_no)
-            //    .FirstOrDefault();
-            //string str_workorder_no = DateTime.Now.ToString("yyyyMMdd").PadRight(11, '0');
-            //if (data != null)
-            //{
-            //    if (string.IsNullOrEmpty(data.workorder_no)) str_workorder_no = DateTime.Now.ToString("yyyyMMdd").PadRight(11, '0');
-            //    str_workorder_no = (Int64.Parse(data.workorder_no) + 1).ToString();
-            //}
 
             int int_seq = 0;
             string str_today = DateTime.Now.ToString("yyyyMMdd");
@@ -78,11 +68,6 @@ namespace MES.Controllers
             }
             int_seq++;
             string str_workorder_no = str_today + int_seq.ToString().PadLeft(3, '0');
-
-
-
-
-
 
             workorder model = new workorder()
             {
@@ -102,10 +87,6 @@ namespace MES.Controllers
         public ActionResult CreateMaster(workorder model)
         {
             bool bln_error = false;
-            //if (!ModelState.IsValid) return View(model);   
-            //var check1 = db.route.Where(m => m.r_no == model.workorder_no).FirstOrDefault();
-            //if (check1 != null) { ModelState.AddModelError("workorder_no", "編號重複"); bln_error = true; }
-            //if (bln_error) return View(model);
             if (!ModelState.IsValid) bln_error = true;
             if (!bln_error)
             {
@@ -210,14 +191,10 @@ namespace MES.Controllers
                 out_qty = Count(model.in_qty, model.bad_qty, model.adj_qty)
             };
 
-
-
-
             var pre_out_qty = db.workorder_detail.Where(m => m.workorder_no == AppSession.MasterKeyValue).OrderByDescending(m => m.sort_no).FirstOrDefault();
 
             if (pre_out_qty != null)
             {
-
                 if (data.in_qty != pre_out_qty.out_qty)
                 {
                     data.remark = "數量錯誤";
@@ -227,7 +204,6 @@ namespace MES.Controllers
                     data.remark = "";
                 }
             }
-
 
             db.workorder_detail.Add(data);
             db.SaveChanges();
@@ -257,22 +233,8 @@ namespace MES.Controllers
         {
 
             bool bln_error = false;
-            //if (!ModelState.IsValid) return View(model);
-            //var check1 = db.workorder.Where(m => m.workorder_no == model.workorder_no && m.rowid != model.rowid).FirstOrDefault();
-            //if (check1 != null) { ModelState.AddModelError("workorder_no", "編號重複"); bln_error = true; }
-            //if (bln_error) return View(model);
-
 
             if (!ModelState.IsValid) bln_error = true;
-            //if (!bln_error)
-            //{
-            //    var check1 = db.workorder
-            //        .Where(m => m.workorder_no != model.workorder_no)
-            //        //.Where(m => m.r_no == model.r_no)
-            //        // .Where(m => m.proc_no == model.proc_no)
-            //        .FirstOrDefault();
-            //    if (check1 != null) { ModelState.AddModelError("workorder_no", "編號重複"); bln_error = true; }
-            //}
             if (bln_error)
             {
                 ViewBag.RouteList = GetRouteList(model.route_no);
@@ -393,16 +355,6 @@ namespace MES.Controllers
             return RedirectToAction("List");
         }
 
-        ///// <summary>
-        ///// 取得製程名稱
-        ///// </summary>
-        ///// <param name="procNo">製程代號</param>
-        ///// <returns></returns>
-        //private string GetProcessName(string procNo)
-        //{
-        //    var data = db.process.Where(m => m.proc_no == procNo).FirstOrDefault();
-        //    return (data == null) ? "" : data.proc_name;
-        //}
 
         /// <summary>
         /// 取得產品下拉資料

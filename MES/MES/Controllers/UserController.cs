@@ -211,8 +211,6 @@ namespace MES.Controllers
             }
         }
 
-
-
         //重設密碼
         [HttpGet]
         [LoginAuthorize(RoleList = "User,Admin")]
@@ -304,19 +302,6 @@ namespace MES.Controllers
             UserAccount.UploadImageMode = false;
             return RedirectToAction("List");
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         public ActionResult UploadImage()

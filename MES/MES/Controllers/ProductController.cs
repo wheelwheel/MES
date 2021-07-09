@@ -24,9 +24,7 @@ namespace MES.Controllers
                         re_complete_no = p1.re_complete_no,
                         order_no = d1.order_no,
                         proc_no = p1.proc_no,
-                        //proc_name = p1.proc_name,
                         mach_no = p1.mach_no,
-                        //mach_name = p1.mach_name,
                         user_no = p1.user_no,
                         start_time = p1.start_time,
                         end_time = p1.end_time,
@@ -87,9 +85,7 @@ namespace MES.Controllers
                         re_complete_no = p1.re_complete_no,
                         order_no = d1.order_no,
                         proc_no = p1.proc_no,
-                        //proc_name = p1.proc_name,
                         mach_no = p1.mach_no,
-                        //mach_name = p1.mach_name,
                         user_no = p1.user_no,
                         start_time = p1.start_time,
                         end_time = p1.end_time,
@@ -143,7 +139,6 @@ namespace MES.Controllers
             using (MESEntities db = new MESEntities())
             {
                 string orderNo = Session["order_no"].ToString();
-                //string orderNo = "20201028001";
                 var datas = db.re_complete_detail
                     .Join(db.re_complete, p => p.re_complete_no, d => d.re_complete_no,
                     (p1, d1) => new
@@ -151,9 +146,7 @@ namespace MES.Controllers
                         re_complete_no = p1.re_complete_no,
                         order_no = d1.order_no,
                         proc_no = p1.proc_no,
-                        //proc_name = p1.proc_name,
                         mach_no = p1.mach_no,
-                        //mach_name = p1.mach_name,
                         user_no = p1.user_no,
                         start_time = p1.start_time,
                         end_time = p1.end_time,
@@ -183,13 +176,10 @@ namespace MES.Controllers
                     return RedirectToAction("EnTraceCode", "Product");
                 }
 
-
-
                 List<ProductViewModel> data = new List<ProductViewModel>();
                 foreach (var item in datas)
                 {
                     ProductViewModel d = new ProductViewModel();
-                    //d.re_complete_no = item.p3.p2.re_complete_no;
                     d.order_no = item.p5.p4.p3.p2.order_no;
                     d.product_no = item.p5.product_no;
                     d.product_name = item.product_name;
