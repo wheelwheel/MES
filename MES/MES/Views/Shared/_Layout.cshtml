@@ -15,16 +15,86 @@
 
     @RenderSection("scripts", required: false)
     @RenderSection("styles", required: false)
+
+    <style>
+        #backTop {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: lightslategray;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            border-radius: 50px;
+            position: fixed;
+            right: 3%;
+            top: 93%;
+            z-index: 990;
+            opacity: 0;
+            border: 2px solid gray;
+            font-size: 14px;
+        }
+
+        .dropdown-menu a, .dropdown-item, .nav a {
+            text-decoration: none; /* 移除超連結底線 */
+        }
+
+        .dropdown-menu {
+            min-width: 0 !important;
+        }
+    </style>
+    <script>
+
+        $(function () {
+            var wh = $(window).width()
+            if (wh < 575) {
+                $("#b1,#b2,#b3").click(function () {
+                    $("#bar").slideUp()
+                })
+
+                $('#btn').click(function () {
+                    $("#bar").slideToggle()
+                })
+            }
+
+            var targetArray = ["#about", "#product", "#contact-us"]
+            $("#b1,#b2,#b3").click(function () {
+                var btnName = $(this).attr('id').charAt(1) - 1
+                if (wh < 450) {
+                    $("body,html").animate({ scrollTop: $(targetArray[btnName]).offset().top - 80 }, 800)
+                }
+                else {
+                    $("body,html").animate({ scrollTop: $(targetArray[btnName]).offset().top - 50 }, 800)
+                }
+                $("#backTop").animate({ "opacity": "0.65" }, 1500)
+                setTimeout(hintTop, 5000)
+                $("#backTop").hover(function () {
+                    $(this).css({ "opacity": "1", "cursor": "pointer" })
+                }, function () {
+                    $(this).css({ "opacity": "0.35" })
+                })
+            })
+
+
+            function hintTop() {
+                $("#backTop").animate({ "opacity": "0" }, 1500)
+            }
+
+            $('#logo,#backTop').click(function () {
+                $("body,html").animate({ scrollTop: $("#index").offset().top }, 800)
+            })
+        })
+    </script>
 </head>
-<body class="p-0 h-100" >
-    <nav class=" navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<body class="p-0 h-100">
+    <span id="backTop">Top</span>
+    <nav class=" navbar navbar-expand-sm navbar-light bg-light sticky-top">
         @Html.Partial("~/Views/Shared/_PartialBannerHeader.cshtml")
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bar"
-                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" id="btn" data-toggle="collapse" data-target="#bar">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="bar">
+        <div class="collapse navbar-collapse justify-content-end" id="bar">
             <ul class="nav navbar-nav ml-auto">
                 @if (UserAccount.IsLogin == true)
                 {
@@ -50,52 +120,5 @@
         @RenderBody()
         @Html.Partial("~/Views/Shared/_PartialFooter.cshtml")
     </div>
-    <style>
-        .toTop-arrow {
-            border-radius: 25%;
-            opacity: 0.6;
-            background-color: darkslateblue;
-            position: fixed;
-            border: none;
-            right: 1rem;
-            bottom: 1rem;
-            z-index: 9999;
-            color: cornflowerblue;
-        }
-        .dropdown-menu a, .dropdown-item, .nav a {
-            text-decoration: none; /* 移除超連結底線 */
-        }
-        .dropdown-menu{
-            min-width:0 !important;
-        }
-    </style>
-    <button type="button" id="BackTop" class="toTop-arrow"><i class="fa fa-chevron-up fa-2x"></i></button>
-    <script>
-        $(function () {
-            $('#BackTop').click(function () {
-                $('html,body').animate({ scrollTop: 0 }, 333);
-            });
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 300) {
-                    $('#BackTop').fadeIn(222);
-                } else {
-                    $('#BackTop').stop().fadeOut(222);
-                }
-            }).scroll();
-        });
-
-        $('.nav .smooth-scroll').click(function () {
-            if ($(window).width() <= 1024) {
-                $('.navbar-toggler').trigger('click');
-            }
-        });
-
-        jQuery(document).ready(function (e) {
-            var offset = jQuery(':target').offset();
-            var scrollto = offset.top - 260;
-            jQuery('html, body').animate({ scrollTop: scrollto }, 0);
-        });
-
-    </script>
 </body>
 </html>
