@@ -6,7 +6,8 @@
 ## 使用說明
 #### 使用Microsoft SQL Server
 ##### 資料庫檔案放置位置
-MES/MES/App_Data/MESSql.txt  記得至Web.config修改資料庫連線
+MES/MES/App_Data/MESSql.txt <br>
+記得至Web.config修改資料庫連線
 
 ## 測試帳號
 ##### 管理者:
