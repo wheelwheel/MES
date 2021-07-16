@@ -3,10 +3,12 @@
 @{
     ViewBag.Title = "回報單明細新增";
 }
-
 @section scripts{
-    <script src="@Url.Content("~/Scripts/datepicker.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.zh-TW.js")"></script>
 }
+<link rel="stylesheet" href="@Url.Content("~/Content/bootstrap-datetimepicker.min.css")">
+
 
 @using (Html.BeginForm())
 {
@@ -75,7 +77,10 @@
                             <div class="row row-group">
                                 @Html.LabelFor(model => model.start_time, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
                                 <div class="col-md-9">
-                                    @Html.EditorFor(model => model.start_time, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                    <div class="input-group date start_datetime">
+                                        @Html.EditorFor(model => model.start_time, new { htmlAttributes = new { @class = "form-control" } })
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                    </div>
                                     @Html.ValidationMessageFor(model => model.start_time, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -83,7 +88,10 @@
                             <div class="row row-group">
                                 @Html.LabelFor(model => model.end_time, htmlAttributes: new { @class = "control-label col-md-3 ColumnHeader" })
                                 <div class="col-md-9">
-                                    @Html.EditorFor(model => model.end_time, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                    <div class="input-group date end_datetime">
+                                        @Html.EditorFor(model => model.end_time, new { htmlAttributes = new { @class = "form-control" } })
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                    </div>
                                     @Html.ValidationMessageFor(model => model.end_time, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -117,3 +125,36 @@
         </div>
     </div>
 }
+
+<script type="text/javascript">
+    $('.start_datetime').datetimepicker({
+        language: 'zh-TW',
+        locale: {
+            format: "yyyy/MM/dd HH:mm:ss"
+        },
+        startDate: new Date,
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+
+    });
+
+    $('.end_datetime').datetimepicker({
+        language: 'zh-TW',
+        locale: {
+            format: "yyyy/MM/dd HH:mm:ss"
+        },
+        startDate: new Date,
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+    });
+</script>

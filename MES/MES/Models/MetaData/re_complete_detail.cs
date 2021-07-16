@@ -40,12 +40,12 @@ namespace MES.Models
             public string user_no { get; set; }
 
             [Display(Name = "開始時間")]
-            [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd hh:mm:ss}")]
+            [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}")]
             [Required(ErrorMessage = "時間不可空白!")]
             public DateTime start_time { get; set; }
 
             [Display(Name = "結束時間")]
-            [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd hh:mm:ss}")]
+            [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}")]
             [Required(ErrorMessage = "時間不可空白!")]
             public DateTime end_time { get; set; }
 

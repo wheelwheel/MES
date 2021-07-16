@@ -134,8 +134,8 @@
     $('.start_datetime').datetimepicker({
         language: 'zh-TW',
         locale: {
-            format: "yyyy/MM/dd hh:mm:ss"
-        },      
+            format: "yyyy/MM/dd HH:mm:ss"
+        },
         startDate: new Date,
         weekStart: 1,
         todayBtn: 1,
@@ -144,12 +144,14 @@
         startView: 2,
         forceParse: 0,
         showMeridian: 1,
-        
+
     });
 
     $('.end_datetime').datetimepicker({
         language: 'zh-TW',
-        
+        locale: {
+            format: "yyyy/MM/dd HH:mm:ss"
+        },
         startDate: new Date,
         weekStart: 1,
         todayBtn: 1,
@@ -158,6 +160,5 @@
         startView: 2,
         forceParse: 0,
         showMeridian: 1,
-        format: "yyyy/MM/dd hh:mm:ss"
     });
 </script>
